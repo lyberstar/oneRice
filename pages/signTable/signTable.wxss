@@ -1,0 +1,98 @@
+/* pages/signTable/signTable.wxss */
+page{
+	width: 100%;
+	height: 100%;
+}
+
+.body_contain{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.sign_table{
+	width: 100%;
+}
+
+.sign_box{
+	padding: 0 40rpx;
+	border-bottom: 10rpx solid #f8f8f8;
+}
+
+.input_box{
+  height: 60rpx;
+	display: flex;
+	padding: 44rpx 0;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1rpx solid #e8e8e8;
+}
+
+.input_box:last-child{
+	border-bottom: 0;
+}
+
+.input_box text{
+	font-size: 28rpx;
+  	font-weight: 300;
+  	line-height: 1;
+  	color: #4a4a4a;
+}
+
+.input_box input{
+	font-size: 28rpx;
+	color: #333;
+	width: 450rpx;
+}
+.picker{
+  	display:flex;
+	align-items:center;
+	font-size: 32rpx;
+	color: #333;
+	width: 450rpx;
+  	height: 60rpx;
+}
+
+.input_box .place{
+	color: #d0d0d0;
+}
+
+.tip_box{
+	position: fixed;
+	bottom: 130rpx;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 26rpx;
+	color: #606060;
+}
+
+.turn_tip{
+	color: #ff5858;
+}
+
+.btn_contain{
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20rpx 0;
+}
+
+.submit{
+	width: 650rpx;
+  	height: 80rpx;
+  	border-radius: 6rpx;
+  	font-size: 34rpx;
+  	line-height: 0.94;
+  	color: #ffffff;
+  	background-color: #28b1cd;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}

@@ -1,0 +1,25 @@
+<!--pages/form/form.wxml-->
+<image src='{{IMG_LIST.formBg}}' class='bg'></image>
+<span class='rules' bindtap='goRules'>活动介绍</span>
+<view class='form-content'>
+  <form bindsubmit="formSubmit">
+    <view class='form-item'>
+      <image class='icon' src='{{IMG_LIST.name}}'></image>
+      <input class='form-input' name='name' placeholder='用户名' placeholder-style='color: #FF9A9A;font-size: 24rpx;'></input>
+    </view>
+    <view class='form-item'>
+      <image class='icon' src='{{IMG_LIST.phone}}'></image>
+      <input class='form-input' maxlength='11' type="number" name='phone' placeholder='电话' placeholder-style='color: #FF9A9A;font-size: 24rpx;'></input>
+    </view>
+    <view class='form-item'>
+      <image class='icon' src='{{IMG_LIST.address}}'></image>
+      <input class='form-input' name='area' placeholder='区域' placeholder-style='color: #FF9A9A;font-size: 24rpx;' disabled value='{{AREA_LIST[index].area}}'></input>
+      <view class="form-item form-picker">
+        <picker range='{{AREA_LIST}}' value='{{index}}' bindchange='bindPickerChange' range-key="area" data-id='{{AREA_LIST[index].code}}'>
+            区域<span class="area-value">{{AREA_LIST[index].area}}</span>
+        </picker>
+      </view>
+    </view>
+    <button form-type="submit" hover-class='hover-class'>注  册</button>
+  </form>
+</view>

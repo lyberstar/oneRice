@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/center/center",
+    "pages/newsList/newsList",
+    "pages/tips/tips",
+    "pages/signTable/signTable",
+    "pages/firstSign/firstSign",
+    "pages/taskList/taskList",
+    "pages/taskDetail/taskDetail",
+    "pages/questionnaire/questionnaire",
+    "pages/poster/poster",
+    "pages/activityIntro/activityIntro",
+    "pages/allowDetail/allowDetail",
+    "pages/mySteps/mySteps",
+    "pages/rank/rank",
+    "pages/form/form",
+    "pages/mine/mine"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTitleText": "我要打卡",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#ffffff",
+    "selectedColor": "#EAAA00",
+    "backgroundColor": "#003057",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/img/home.png",
+        "selectedIconPath": "/img/home-hover.png"
+      },
+      {
+        "pagePath": "pages/rank/rank",
+        "text": "排名",
+        "iconPath": "/img/personal.png",
+        "selectedIconPath": "/img/personal-hover.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

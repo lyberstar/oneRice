@@ -1,0 +1,21 @@
+<template name="taskIntro">
+  <view class="task_box">
+    <view class="task_title">
+      活动须知
+    </view>
+    <view class="task_content">
+      <text class="content">请在2小时内，完成9户，完成拍摄小视频或照片，9个，并分享你做公益的美好时刻。</text>
+      <text class="tips">提示：你们战队所拍摄的视频和照片愿意授权义仓发展网络用于公益传播。各战队成人在告知公益挑战工作人员后，即可退出挑战活动。</text>
+    </view>
+  </view>
+  <view class="task_box">
+    <view class="task_title">
+      拍摄须知
+    </view>
+    <view class="task_content">
+      <text class="content">拿稳手机要横拍；可拍摄敲门场景；</text>
+      <text class="content">可拍摄暮米场景；可拍摄合照场景；</text>
+      <text class="content">照片摄影对半拍。</text>
+    </view>
+  </view>
+</template>

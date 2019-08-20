@@ -1,0 +1,6 @@
+<view class="body_contain">
+	<button class="sing_btn" catchtap="turnSign" disabled="{{isSignUp != 0}}">报名</button>
+	<button class="start_btn" catchtap="turnStart" disabled="{{isSignUp != 0}}">开始</button>
+	<button class="start_btn" catchtap="turnIntro">活动介绍</button>
+	<button class="start_btn" catchtap="turnNews">新闻</button>
+</view>

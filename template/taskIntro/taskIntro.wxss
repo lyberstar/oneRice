@@ -1,0 +1,32 @@
+.task_box{
+  width: 100%;
+}
+
+.task_title{
+  font-size: 34rpx;
+  margin: 20rpx 0;
+  border-left: 10rpx solid #4a86e8;
+  padding-left: 15rpx;
+  display: flex;
+  align-items: center;
+}
+
+.task_content{
+  display: flex;
+  flex-direction: column;
+}
+
+.content{
+  color: #000;
+  font-size: 28rpx;
+  font-weight: 300;
+  line-height: 40rpx;
+  margin-bottom: 10rpx;
+}
+
+.tips{
+  font-size: 24rpx;
+  font-weight: 300;
+  color: #9b9b9b;
+  line-height: 48rpx;
+}

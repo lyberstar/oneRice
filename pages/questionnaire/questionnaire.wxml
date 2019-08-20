@@ -1,0 +1,21 @@
+<!--pages/questionnaire/questionnaire.wxml-->
+<view class="container">
+  <form bindsubmit="formSubmit">
+    <view wx:for="{{question}}" wx:key="key" wx:for-index="index" class='question'>
+      <!-- 单选 -->
+      <view class='label'>
+        {{item.question_name}}
+        <text style='color:#ccc;font-wight:100;'>(单选)</text>
+        <radio-group class="radio-group" bindchange="radioChange" name="{{item.question_id}}">
+          <label class="radio" wx:for="{{item.answer_list}}" wx:key="item">
+            <radio value="{{item.answer_name}}" checked="{{item.checked}}" class='inner_box' color='#0276C9'/>
+            {{item.answer_name}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="btn_contain">
+        <button formType="submit" class='submit'>提交</button>
+    </view>
+  </form>
+</view>
