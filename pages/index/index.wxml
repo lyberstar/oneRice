@@ -1,6 +1,16 @@
 <view class="body_contain">
-	<button class="sing_btn" catchtap="turnSign" disabled="{{isSignUp != 0}}">报名</button>
-	<button class="start_btn" catchtap="turnStart" disabled="{{isSignUp != 0}}">开始</button>
-	<button class="start_btn" catchtap="turnIntro">活动介绍</button>
-	<button class="start_btn" catchtap="turnNews">新闻</button>
+	<view class="btm-box">
+		<button class="sing_btn btn_back1" catchtap="turnSign">报名</button>
+		<view class="back-hover" wx:if="{{isSignUp != 0}}"></view>
+	</view>
+	<view class="btm-box btm-top">
+		<button class="start_btn btn_back2" catchtap="turnStart">开始</button>
+		<view class="back-hover" wx:if="{{isSignUp != 0}}"></view>
+	</view>
+	<view class="btm-box btm-top">
+		<button class="start_btn btn_back3" catchtap="turnIntro">活动介绍</button>
+	</view>
+	<view class="btm-box btm-top">
+		<button class="start_btn btn_back4" catchtap="turnNews">新闻</button>
+	</view>
 </view>

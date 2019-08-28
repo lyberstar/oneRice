@@ -5,11 +5,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20rpx 0;
+  padding: 30rpx 0;
 }
 .left-rank, .right-rank {
   display: flex;
   align-items: center;
+  margin-right: 30rpx;
 }
 image {
   display: block;
@@ -17,13 +18,20 @@ image {
 .rank-img {
   width: 40rpx;
   height: 50rpx;
-  padding-left: 18rpx;
+  padding: 0 30rpx;
 }
 .rank-num {
-  width: 60rpx;
+  width: 100rpx;
   text-align: center;
-  color: #666;
-  font-size: 26rpx;
+  font-size:24rpx;
+  font-family:Arial;
+  font-weight:900;
+  color:rgba(252,204,117,1);
+  line-height:34rpx;
+}
+
+.name-area{
+  margin-left: 30rpx;
 }
 .avatar {
   width: 90rpx;
@@ -41,11 +49,11 @@ image {
   color: #999;
 }
 .steps {
-  font-size: 50rpx;
-  font-weight: 600;
-  color: #e31918;
-  font-style:italic;
-  font-style:oblique;
+  font-size: 28rpx;
+  font-family: PingFangSC;
+  font-weight: 400;
+  color: rgba(158,158,158,1);
+  line-height: 40rpx;
 }
 .star {
   padding: 0 20rpx 0 40rpx;

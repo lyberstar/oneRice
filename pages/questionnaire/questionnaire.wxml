@@ -2,13 +2,24 @@
 <view class="container">
   <form bindsubmit="formSubmit">
     <view wx:for="{{question}}" wx:key="key" wx:for-index="index" class='question'>
+      <!-- 多选 -->
+      <view class='check-box' wx:if="{{item.question_style == 1}}">
+        {{item.question_name}} 
+        <text style='color:#ccc;font-wight:100;'>(最多两项)</text>
+        <checkbox-group bindchange="checkboxChange" class="checkbox-group" name="{{item.question_id}}">
+          <label class="checkbox"  wx:for="{{item.answer_list}}" wx:key="item" wx:for-index="num">
+            <checkbox value="{{num}}" checked="{{item.checked}}" class='inner_box' color='#0276C9'/>
+            {{item.answer_name}}
+          </label>
+        </checkbox-group>
+      </view>
       <!-- 单选 -->
-      <view class='label'>
+      <view class='label' wx:if="{{item.question_style == 2}}">
         {{item.question_name}}
         <text style='color:#ccc;font-wight:100;'>(单选)</text>
         <radio-group class="radio-group" bindchange="radioChange" name="{{item.question_id}}">
-          <label class="radio" wx:for="{{item.answer_list}}" wx:key="item">
-            <radio value="{{item.answer_name}}" checked="{{item.checked}}" class='inner_box' color='#0276C9'/>
+          <label class="radio" wx:for="{{item.answer_list}}" wx:key="item" wx:for-index="num">
+            <radio value="{{num}}" checked="{{item.checked}}" class='inner_box' color='#0276C9'/>
             {{item.answer_name}}
           </label>
         </radio-group>

@@ -1,0 +1,13 @@
+<!--pages/newsDetail/newsDetail.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+
+<view class='content'>
+	<image class="head-img" src="{{detail.littleImageUrl}}"></image>
+	<view class="title-box">
+		<view class="title">{{detail.newsName}}</view>
+		<view class="time">{{detail.time}}</view>
+	</view>
+  	<view class='detail-content'>
+    	<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  	</view>
+</view>

@@ -4,37 +4,45 @@
 		<form bindsubmit="formSubmit">
 			<view class="sign_box">
 				<view class="input_box">
+					<text>公益队名</text>
+					<input type="text" name="teamname" placeholder="请输入队名" placeholder-class="place" />
+				</view>
+			</view>
+			<view class="sign_box">
+				<view class="input_box">
 					<text>队长姓名(家长)</text>
-					<input type="text" name="name" placeholder="请输入姓名" placeholder-class="place" />
+					<input type="text" name="name1" placeholder="请输入姓名" placeholder-class="place" />
 				</view>
 			</view>
 			<view class="sign_box">
 				<view class="input_box">
 					<text>队员姓名1(儿童)</text>
-					<input type="text" name="name" placeholder="请输入姓名" placeholder-class="place" />
+					<input type="text" name="name2" placeholder="请输入姓名" placeholder-class="place" />
 				</view>
 				<view class="input_box">
 					<text>队员姓名2(儿童)</text>
-					<input type="text" name="name" placeholder="请输入姓名" placeholder-class="place" />
+					<input type="text" name="name3" placeholder="请输入姓名" placeholder-class="place" />
 				</view>
 			</view>
 			<view class="sign_box">
 				<view class="input_box">
 					<text>所在地区</text>
-					<picker class="picker" mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+					<picker class="picker" name="location" mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
 						<text>{{multiArray[0][multiIndex[0]]}}-{{multiArray[1][multiIndex[1]]}}</text>
 					</picker>
 				</view>
 				<view class="input_box">
 					<text>落地机构</text>
-					<picker class="picker" bindchange="bindPickerChange" name="sex" value="{{index}}" range="{{array}}">
+					<picker class="picker" bindchange="bindPickerChange" name="part" value="{{index}}" range="{{array}}">
 	        			<text>{{array[index]}}</text>
 	   		 		</picker>
 				</view>
 			</view>
-			<view class="tip_box">
-				<checkbox checked="{{isChecked}}" />您已同意
-				<p class="turn_tip" bindtap="turnTip">《免责声明》</p>
+			<view class="tip_box_group">
+				<checkbox-group bindchange="checkboxChange" class="tip_box">
+					<checkbox checked="{{isChecked}}" value="{{isChecked}}" />您已同意
+					<p class="turn_tip" bindtap="turnTip">《免责声明》</p>
+				</checkbox-group>
 			</view>
 			<view class="btn_contain">
 				<button formType="submit" class="submit">提交</button>

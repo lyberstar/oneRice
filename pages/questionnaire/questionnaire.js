@@ -9,20 +9,31 @@ Page({
     nav_id: '0',
     question:[
       {
-        question_name:'Q1:你参加此次一勺米公益挑战活动是否满意？',
+        question_name:'Q1:与邻居交流时，聊天的话题主要涉及哪些内容？',
         question_id: "question_0001",
+        question_style:1,
         answer_list:[
           {
-            answer_name: "是"
+            answer_name: "一勺米活动信息"
           },
           {
-            answer_name: "否"
+            answer_name: "主办方机构信息"
+          },
+          {
+            answer_name: "关心参与个人信息"
+          },
+          {
+            answer_name: "参与公益活动信息"
+          },
+          {
+            answer_name: "你们社区的信息"
           }
         ]
       },
       {
         question_name:'Q2:你认为一勺米公益挑战是否有助于打破邻里冷漠？',
         question_id: "question_0002",
+        question_style:2,
         answer_list:[
           {
             answer_name: "是"
@@ -35,6 +46,7 @@ Page({
       {
         question_name:'Q3:你认为当前邻里关系现状是？',
         question_id: "question_0003",
+        question_style:2,
         answer_list:[
           {
             answer_name: "亲密"
@@ -99,6 +111,90 @@ Page({
   onShow: function() {
 
   },
+
+  checkboxChange: function (e) {  
+    var that = this;  
+    var skin = e.detail.value  
+    //新建数组全部设置为没被选中  
+    var new_itmes = [
+      {
+        question_name:'Q1:与邻居交流时，聊天的话题主要涉及哪些内容？',
+        question_id: "question_0001",
+        question_style:1,
+        answer_list:[
+          {
+            answer_name: "一勺米活动信息"
+          },
+          {
+            answer_name: "主办方机构信息"
+          },
+          {
+            answer_name: "关心参与个人信息"
+          },
+          {
+            answer_name: "参与公益活动信息"
+          },
+          {
+            answer_name: "你们社区的信息"
+          }
+        ]
+      },
+      {
+        question_name:'Q2:你认为一勺米公益挑战是否有助于打破邻里冷漠？',
+        question_id: "question_0002",
+        question_style:2,
+        answer_list:[
+          {
+            answer_name: "是"
+          },
+          {
+            answer_name: "否"
+          }
+        ]
+      },
+      {
+        question_name:'Q3:你认为当前邻里关系现状是？',
+        question_id: "question_0003",
+        question_style:2,
+        answer_list:[
+          {
+            answer_name: "亲密"
+          },
+          {
+            answer_name: "舒适"
+          },
+          {
+            answer_name: "疏离"
+          },
+          {
+            answer_name: "冷漠"
+          }
+        ]
+      }
+    ] 
+    if (skin.length > 2) {  
+      //取出倒数三个值  
+      var key1 = skin[skin.length - 1];  
+      var key2 = skin[skin.length - 2];  
+      //设置最后三个值为选中状态  
+      new_itmes[0].answer_list[key1]['checked'] = 'true'  
+      new_itmes[0].answer_list[key2]['checked'] = 'true'  
+  
+      //删除被选中的第一个值  
+      skin.splice(0, 1);  
+    } else {  
+      //被选中少于三个，直接设置被选中  
+      for (var i = 0; i < skin.length; i++) {  
+        var key = skin[i]  
+        new_itmes[0].answer_list[key]['checked'] = 'true'  
+      }  
+    }  
+    //存入  
+    that.setData({  
+      question: new_itmes  
+    })
+  },
+
   formSubmit:function(e){
     let that = this
     console.log(e.detail.value)

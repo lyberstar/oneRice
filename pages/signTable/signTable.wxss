@@ -59,10 +59,15 @@ page{
 	color: #d0d0d0;
 }
 
-.tip_box{
+.tip_box_group{
 	position: fixed;
 	bottom: 130rpx;
 	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.tip_box{
 	display: flex;
 	justify-content: center;
 	align-items: center;

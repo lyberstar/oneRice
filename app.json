@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/newsDetail/newsDetail",
     "pages/center/center",
     "pages/newsList/newsList",
     "pages/tips/tips",
@@ -18,28 +19,26 @@
     "pages/mine/mine"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "backgroundColor": "#fff",
-    "navigationBarBackgroundColor": "#000000",
-    "navigationBarTitleText": "我要打卡",
-    "navigationBarTextStyle": "white"
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "color": "#ffffff",
-    "selectedColor": "#EAAA00",
-    "backgroundColor": "#003057",
+    "selectedColor": "#1EC8A0",
+    "backgroundColor": "#fff",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "/img/home.png",
-        "selectedIconPath": "/img/home-hover.png"
+        "iconPath": "/img/qa.png",
+        "selectedIconPath": "/img/qa_selected.png"
       },
       {
         "pagePath": "pages/rank/rank",
         "text": "排名",
-        "iconPath": "/img/personal.png",
-        "selectedIconPath": "/img/personal-hover.png"
+        "iconPath": "/img/me.png",
+        "selectedIconPath": "/img/me_selected.png"
       }
     ]
   },

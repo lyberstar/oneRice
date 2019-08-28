@@ -122,6 +122,17 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    return {
+      title: '一勺米公益挑战，让参与更有趣',
+      path: '/pages/index/index',
+      success: (res) => {
+        // 成功后要做的事情
 
+      },
+      fail: function (res) {
+        // 分享失败
+        console.log(res)
+      }
+    }
   }
 })

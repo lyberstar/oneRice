@@ -11,6 +11,7 @@ Page({
   getUserInfo() {
     wx.getUserInfo({ //获取用户的授权信息
       success: res => {
+        wx.setStorageSync('userInfo', res.userInfo)
         app.globalData.userInfo = res.userInfo
         wx.login({
           success: res => {

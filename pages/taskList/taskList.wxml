@@ -9,10 +9,10 @@
       <view class="doing_content">{{dayItem.name}}</view>
     </view>
     <view class="list_box" wx:if="{{index > next_index}}">
-      <view class="fur_content">{{dayItem.name}}</view>
+      <view class="fur_content">{{dayItem.name}}(未完成)</view>
     </view>
   </view>
 </view>
 <view class="btn_contain">
-    <button catchtap="submit" class="submit">上传</button>
+    <button catchtap="submit" class="submit" disabled="{{next_index < 10}}">完成挑战</button>
 </view>

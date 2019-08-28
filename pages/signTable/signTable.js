@@ -79,23 +79,21 @@ Page({
   },
 
   formSubmit: function (e) {
-    if (!e.detail.value.name) {
-      wx.showToast({title:'请输入姓名',icon:'none'})
+    let that = this
+    if (!e.detail.value.teamname) {
+      wx.showToast({title:'请输入队名',icon:'none'})
       return false
-    }else if (!e.detail.value.age) {
-      wx.showToast({title:'请输入年龄',icon:'none'})
+    }else if (e.detail.value.teamname.length > 12) {
+      wx.showToast({title:'队名不超过12个字符',icon:'none'})
       return false
-    }else if (e.detail.value.sex == 0) {
-      wx.showToast({title:'请选择性别',icon:'none'})
+    }else if (e.detail.value.name1 == 0) {
+      wx.showToast({title:'请输入家长姓名',icon:'none'})
       return false
-    }else if (!e.detail.value.age) {
-      wx.showToast({title:'请输入年龄',icon:'none'})
+    }else if (e.detail.value.part == 0) {
+      wx.showToast({title:'请选择落地机构',icon:'none'})
       return false
-    }else if (!e.detail.value.idcard) {
-      wx.showToast({title:'请输入身份证号',icon:'none'})
-      return false
-    }else if (!e.detail.value.phone) {
-      wx.showToast({title:'请输入手机号',icon:'none'})
+    }else if (that.data.isChecked == false) {
+      wx.showToast({title:'请阅读并同意《免责声明》',icon:'none'})
       return false
     }
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
@@ -147,6 +145,20 @@ Page({
     wx.navigateTo({
       url:'/pages/tips/tips'
     })
+  },
+
+  checkboxChange: function(e) {
+    let that = this
+    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    if (e.detail.value.length == 0) {
+      that.setData({
+        isChecked:false
+      })
+    }else{
+      that.setData({
+        isChecked:true
+      })
+    }
   },
 
   /**

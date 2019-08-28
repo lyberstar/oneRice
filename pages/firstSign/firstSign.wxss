@@ -23,8 +23,8 @@ page{
 }
 
 .uploadImage .img_box{
-	width: 160rpx;
-	height: 160rpx;
+	width: 260rpx;
+	height: 260rpx;
 	border-radius: 6rpx;
 	border: solid 1rpx #d2d2d2;
 	display: flex;
