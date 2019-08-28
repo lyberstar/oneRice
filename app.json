@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/partList/partList",
     "pages/newsDetail/newsDetail",
     "pages/center/center",
     "pages/newsList/newsList",
@@ -21,24 +22,24 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "一勺米",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "selectedColor": "#1EC8A0",
+    "selectedColor": "#5494cc",
     "backgroundColor": "#fff",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "/img/qa.png",
-        "selectedIconPath": "/img/qa_selected.png"
+        "iconPath": "/img/10.png",
+        "selectedIconPath": "/img/11.png"
       },
       {
         "pagePath": "pages/rank/rank",
         "text": "排名",
-        "iconPath": "/img/me.png",
-        "selectedIconPath": "/img/me_selected.png"
+        "iconPath": "/img/20.png",
+        "selectedIconPath": "/img/21.png"
       }
     ]
   },

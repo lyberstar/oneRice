@@ -1,4 +1,5 @@
 <!--pages/firstSign/firstSign.wxml-->
+<import src="../../template/taskIntro/taskIntro.wxml"/>
 <view class="body_contain">
 	<view class="uploadImage">
     	<view class="img_box" bindtap="uploadImage" wx:if="{{previewImage == '' && previewVideo == ''}}">
@@ -16,9 +17,12 @@
     		<video class="preview" src="{{previewVideo}}" data-src="{{previewVideo}}" autoplay="false"></video>
     	</view> -->
     </view>
-    <view class="content">
+    <view class="main-content">
         <p>我正在参加一勺米公益挑战！</p>
         <p>请为我打call。</p>
+    </view>
+    <view class="info_contain">
+      <template is="taskIntro"></template>
     </view>
     <view class="btn_contain">
 		<button catchtap="submit" class="submit">开始挑战</button>

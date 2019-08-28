@@ -24,7 +24,7 @@ page{
 .input_box{
   height: 60rpx;
 	display: flex;
-	padding: 44rpx 0;
+	padding: 34rpx 0;
 	align-items: center;
 	justify-content: space-between;
 	border-bottom: 1rpx solid #e8e8e8;
@@ -100,4 +100,10 @@ page{
   	display: flex;
   	align-items: center;
   	justify-content: center;
+}
+.part-name {
+  width: 67%;
+}
+.part-title {
+  width: 33%;
 }

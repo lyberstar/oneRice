@@ -1,6 +1,6 @@
 // pages/signTable/signTable.js
 import { IMG_LIST } from "../../asset/imgList.js"
-import { request, getAreaName } from "../../utils/util.js"
+import { checkPhone, request, getAreaName } from "../../utils/util.js"
 import { urlList } from "../../asset/urlList.js"
 import { cityList } from "../../asset/cityList.js"
 const app = getApp()
@@ -42,7 +42,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.getStorage({
+      key: 'partItem',
+      success: (res) => {
+        console.log(res)
+        const { partName, partCode } = JSON.parse(res.data)
+        this.setData({
+          partName,
+          partCode,
+        })
+      }
+    })
+  },
+  goPartList() {
+    wx.navigateTo({
+      url: '/pages/partList/partList'
+    })
   },
 
   bindMultiPickerChange: function(e){
@@ -89,6 +104,9 @@ Page({
     }else if (e.detail.value.name1 == 0) {
       wx.showToast({title:'请输入家长姓名',icon:'none'})
       return false
+    }else if (!checkPhone(e.detail.value.phone.trim())) {
+      wx.showToast({ title: '请输入手机号', icon: 'none' })
+      return false
     }else if (e.detail.value.part == 0) {
       wx.showToast({title:'请选择落地机构',icon:'none'})
       return false
@@ -99,10 +117,11 @@ Page({
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     wx.showModal({
       title: '提示',
-      content: '是否确定提交？',
+      content: '是否确定提交？请及时联系落地机构。',
       success (res) {
         if (res.confirm) {
           console.log('用户点击确定')
+          wx.removeStorage({ key: 'partItem'} )
           wx.navigateBack({
             delta: 1
           })
@@ -123,6 +142,7 @@ Page({
     //     if(res.statusCode == 200){
     //       if (res.data.statusCode == 201){
     //       wx.showToast({title:'提交成功'})
+    //       wx.removeStorage({ key: 'partItem'} )
     //       setTimeout(function(){wx.navigateBack({
     //         delta: 1
     //       })}, 800)

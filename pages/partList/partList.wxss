@@ -1,0 +1,7 @@
+/* pages/partList/partList.wxss */
+.part-item {
+  padding: 20rpx;
+  border-bottom: 2rpx solid #ddd;
+  color: #333;
+  font-size: 28rpx;
+}

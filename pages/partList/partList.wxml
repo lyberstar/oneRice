@@ -1,0 +1,4 @@
+<!--pages/partList/partList.wxml-->
+<view class="part-content">
+  <view class="part-item" wx:for="{{PART_LIST}}" bindtap="choosePart" wx:for-item="item" data-item='{{item}}'>{{item.partName}}</view>
+</view>

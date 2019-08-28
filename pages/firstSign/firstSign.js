@@ -131,6 +131,8 @@ Page({
 
   //提交
   submit:function(){
+    // 用户点击确认后，显示该图片的一张canvas，可保存图片；参考utils里的creatShareImg方法
+    // 文案是：每一次转发分享，都是一次爱的传递（换行）你好，邻居
     let that = this
     wx.showModal({
       title: '提示',
@@ -155,9 +157,9 @@ Page({
 
   getTestMD5Success(res){
     console.log('res:',res)
-    // wx.redirectTo({
-    //   url:'/pages/taskList/taskList'
-    // })
+    wx.redirectTo({
+      url:'/pages/taskList/taskList'
+    })
   },
 
   /**
