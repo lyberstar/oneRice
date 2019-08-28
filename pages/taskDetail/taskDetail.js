@@ -1,4 +1,6 @@
 // pages/taskDetail/taskDetail.js
+var sMD5 = require('../../asset/spark-md5.js')
+
 Page({
 
   /**
@@ -7,7 +9,8 @@ Page({
   data: {
     id:'',
     previewImage:'',
-    previewVideo:''
+    previewVideo:'',
+    videoContext:''
   },
 
   /**
@@ -26,7 +29,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.videoContext = wx.createVideoContext('myVideo')
   },
 
   /**
@@ -51,6 +54,19 @@ Page({
           previewImage: previewImage
         })
         console.log('test:', that.data.previewImage)
+
+        //验证md5
+        wx.getFileSystemManager().readFile({
+          filePath: res.tempFilePaths[0], //选择图片返回的相对路径
+          // encoding: 'binary', //编码格式
+          success: res => {
+            //成功的回调
+            var spark = new sMD5.ArrayBuffer();
+            spark.append(res.data);
+            var hexHash = spark.end(false);
+            console.log('md5 test:',hexHash)
+          }
+        })
       }
     })
   },
@@ -66,6 +82,20 @@ Page({
         console.log(res.tempFilePath)
         that.setData({
           previewVideo:res.tempFilePath
+        })
+        that.videoContext.stop()
+
+        //验证md5
+        wx.getFileSystemManager().readFile({
+          filePath: res.tempFilePath, //选择图片返回的相对路径
+          // encoding: 'binary', //编码格式
+          success: res => {
+            //成功的回调
+            var spark = new sMD5.ArrayBuffer();
+            spark.append(res.data);
+            var hexHash = spark.end(false);
+            console.log('md5 test:',hexHash)
+          }
         })
       }
     })
@@ -95,6 +125,7 @@ Page({
         content: '确定删除已选择的视频吗？',
         success (res) {
           if (res.confirm) {
+            that.videoContext.stop()
             that.setData({
               previewVideo:''
             })

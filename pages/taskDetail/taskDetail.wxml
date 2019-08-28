@@ -14,7 +14,7 @@
         </view>
         <view class="preview_box" wx:if="{{previewVideo != ''}}">
             <image class="delete" src="../../img/close.png" data-type="1" catchtap="deleteSrc" />
-            <video class="preview" src="{{previewVideo}}" data-src="{{previewVideo}}" autoplay="false"></video>
+            <video id="myVideo" class="preview" src="{{previewVideo}}" data-src="{{previewVideo}}" autoplay="{{false}}"></video>
         </view>
     </view>
     <view class="info_contain">

@@ -1,4 +1,5 @@
 import { baseUrl } from "../asset/urlList.js"
+import { fileUrl } from "../asset/urlList.js"
 import { IMG_LIST } from "../asset/imgList.js"
 
 const checkPhone = phone => {
@@ -12,6 +13,28 @@ const request = (method, url, data, openId, success, fail, complete) => {
     header: {
       'content-type': 'application/x-www-form-urlencoded',
       openId,
+    },
+    data,
+    method,
+    success: res => {
+      success && success(res)
+    },
+    fail: err => {
+      fail && fail()
+    },
+    complete: () => {
+      complete && complete()
+    }
+  })
+}
+
+const picUpload = (method, url, data, sign, timestamp, success, fail, complete) => {
+  wx.request({
+    url: fileUrl + url,
+    header: {
+      'content-type': 'application/x-www-form-urlencoded',
+      sign,
+      timestamp
     },
     data,
     method,
@@ -108,4 +131,5 @@ module.exports = {
   request,
   saveShareImg,
   creatShareImg,
+  picUpload,
 }

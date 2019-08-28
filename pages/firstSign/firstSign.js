@@ -1,4 +1,9 @@
 // pages/firstSign/firstSign.js
+import { request, picUpload } from "../../utils/util.js"
+import { urlList } from "../../asset/urlList.js"
+
+var sMD5 = require('../../asset/spark-md5.js')
+
 Page({
 
   /**
@@ -6,7 +11,8 @@ Page({
    */
   data: {
     previewImage:'',
-    previewVideo:''
+    previewVideo:'',
+    md5:''
   },
 
   /**
@@ -44,7 +50,22 @@ Page({
         that.setData({
           previewImage: previewImage
         })
-        console.log('test:', that.data.previewImage)
+        console.log('图片本地地址为:', that.data.previewImage)
+        //验证md5
+        wx.getFileSystemManager().readFile({
+          filePath: res.tempFilePaths[0], //选择图片返回的相对路径
+          // encoding: 'binary', //编码格式
+          success: res => {
+            //成功的回调
+            var spark = new sMD5.ArrayBuffer();
+            spark.append(res.data);
+            var hexHash = spark.end(false);
+            console.log('md5 test:',hexHash)
+            that.setData({
+              md5:hexHash
+            })
+          }
+        })
       }
     })
   },
@@ -117,14 +138,26 @@ Page({
       success (res) {
         if (res.confirm) {
           console.log('用户点击确定')
-          wx.redirectTo({
-            url:'/pages/taskList/taskList'
-          })
+          let timestamp = (new Date()).getTime()
+          let sign = sMD5.hash('key1=QINYUANMAO&timestamp=' + timestamp + '&key2=FILE_SERVER_2019')
+          let data = {
+            md5:that.data.md5
+          }
+
+          picUpload('POST', urlList.testMD5, data, sign, timestamp, that.getTestMD5Success, that.getTestMD5Fail)
+          
         } else if (res.cancel) {
           console.log('用户点击取消')
         }
       }
     })
+  },
+
+  getTestMD5Success(res){
+    console.log('res:',res)
+    // wx.redirectTo({
+    //   url:'/pages/taskList/taskList'
+    // })
   },
 
   /**
