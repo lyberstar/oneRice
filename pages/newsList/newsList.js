@@ -14,6 +14,7 @@ Page({
     rankList: [],
     page: 1,
     totalPage: 1,
+    nomore:false
   },
 
   /**
@@ -21,6 +22,21 @@ Page({
    */
   onLoad: function (options) {
     let that = this
+
+    wx.getSystemInfo({
+      success: function success(res) {
+        var clientHeight = res.windowHeight;
+        var clientWidth = res.windowWidth;
+        var rpxR = 750 / clientWidth;
+        var calc = clientHeight * rpxR;
+        var cityHeight = calc;
+        console.log('cityHeight:', cityHeight);
+        that.setData({
+          cityHeight: cityHeight
+        });
+      }
+    });
+
     that.initData()
   },
 
@@ -60,7 +76,7 @@ Page({
     let that = this
     wx.hideLoading()
     let { page, rankList } = that.data
-    if (res.data.pageCount == page) {
+    if (res.data.data.pageCount == page) {
       that.setData({
         nomore:true
       })
@@ -72,6 +88,16 @@ Page({
       totalPage:res.data.data.pageCount
     })
     console.log(that.data.rankList)
+  },
+
+  loadMoreRank(){
+    let that = this
+    let { nomore, page } = that.data
+    if (nomore == true) {
+      return false
+    }else{
+      that.initData()
+    }
   },
 
   turnNews(e){

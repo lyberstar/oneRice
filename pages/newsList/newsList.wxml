@@ -1,5 +1,5 @@
 <!--pages/newsList/newsList.wxml-->
-<scroll-view upper-threshold="-50" scroll-y bindscrolltolower="loadMoreRank" class="body-contain">
+<scroll-view upper-threshold="-50" scroll-y bindscrolltolower="loadMoreRank" class="body-contain" style="height: {{cityHeight}}rpx">
 	<view class="news-box" wx:for="{{rankList}}" wx:for-item="item" wx:key="index" data-id="{{item.id}}" catchtap="turnNews">
 		<view class="left-box">
 			<image class="cover-img" src="{{item.coverImageUrl}}"></image>

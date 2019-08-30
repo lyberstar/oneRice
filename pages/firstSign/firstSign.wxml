@@ -25,6 +25,7 @@
       <template is="taskIntro"></template>
     </view>
     <view class="btn_contain">
+        <button catchtap="makePost" disabled="{{previewImage == ''}}" class="submit">生成海报</button>
 		<button catchtap="submit" class="submit">开始挑战</button>
 	</view>
 </view>

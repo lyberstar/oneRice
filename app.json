@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/firstPoster/firstPoster",
     "pages/partList/partList",
     "pages/newsDetail/newsDetail",
     "pages/center/center",

@@ -155,6 +155,13 @@ Page({
     })
   },
 
+  makePost(){
+    let that = this
+    wx.navigateTo({
+      url:'/pages/firstPoster/firstPoster?pic=' + that.data.previewImage
+    })
+  },
+
   getTestMD5Success(res){
     console.log('res:',res)
     wx.redirectTo({

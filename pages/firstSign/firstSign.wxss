@@ -84,14 +84,14 @@ page{
 	bottom: 0;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-around;
 	padding: 20rpx 0;
 	z-index: 10;
-  background-color: #fff;
+  	background-color: #fff;
 }
 
 .submit{
-	width: 650rpx;
+	width: 300rpx;
   	height: 80rpx;
   	border-radius: 6rpx;
   	font-size: 34rpx;
