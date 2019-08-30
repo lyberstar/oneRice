@@ -1,7 +1,7 @@
 <!--pages/questionnaire/questionnaire.wxml-->
 <view class="container">
   <form bindsubmit="formSubmit">
-    <view wx:for="{{question}}" wx:key="key" wx:for-index="index" class='question'>
+    <view wx:for="{{question1}}" wx:key="key" wx:for-index="index" class='question'>
       <!-- 多选 -->
       <view class='check-box' wx:if="{{item.question_style == 1}}">
         {{item.question_name}} 
@@ -13,6 +13,8 @@
           </label>
         </checkbox-group>
       </view>
+    </view>
+    <view wx:for="{{question2}}" wx:key="key" wx:for-index="index" class='question'>
       <!-- 单选 -->
       <view class='label' wx:if="{{item.question_style == 2}}">
         {{item.question_name}}

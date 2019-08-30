@@ -7,7 +7,7 @@ Page({
   data: {
     has_data: false,
     nav_id: '0',
-    question:[
+    question1:[
       {
         question_name:'Q1:与邻居交流时，聊天的话题主要涉及哪些内容？',
         question_id: "question_0001",
@@ -29,7 +29,9 @@ Page({
             answer_name: "你们社区的信息"
           }
         ]
-      },
+      }
+    ],
+    question2:[
       {
         question_name:'Q2:你认为一勺米公益挑战是否有助于打破邻里冷漠？',
         question_id: "question_0002",
@@ -62,7 +64,7 @@ Page({
           }
         ]
       }
-    ]
+    ],
   },
   onLoad: function(options) {
     // wx.showLoading({
@@ -138,38 +140,6 @@ Page({
             answer_name: "你们社区的信息"
           }
         ]
-      },
-      {
-        question_name:'Q2:你认为一勺米公益挑战是否有助于打破邻里冷漠？',
-        question_id: "question_0002",
-        question_style:2,
-        answer_list:[
-          {
-            answer_name: "是"
-          },
-          {
-            answer_name: "否"
-          }
-        ]
-      },
-      {
-        question_name:'Q3:你认为当前邻里关系现状是？',
-        question_id: "question_0003",
-        question_style:2,
-        answer_list:[
-          {
-            answer_name: "亲密"
-          },
-          {
-            answer_name: "舒适"
-          },
-          {
-            answer_name: "疏离"
-          },
-          {
-            answer_name: "冷漠"
-          }
-        ]
       }
     ] 
     if (skin.length > 2) {  
@@ -191,7 +161,7 @@ Page({
     }  
     //存入  
     that.setData({  
-      question: new_itmes  
+      question1: new_itmes  
     })
   },
 
