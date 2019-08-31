@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isSignUp:0,   //是否报名  0否  1是
+    captainId:''
   },
 
   /**
@@ -41,11 +41,19 @@ Page({
 
   getUserStatusSuccess(res){
     let that = this
-    let data = res.data.data
-    console.log(res)
-    that.setData({
-      isSignUp:data.isSignUp
-    })
+    let data = res.data
+    if (data.code == 0) {
+      that.setData({
+        captainId:data.captainId
+      })
+    }else{
+      wx.showToast({
+        title: data.msg,
+        icon: 'none',
+        duration: 1500
+      })
+    }
+    
     //是否做完开始上传的第一步
     app.globalData.start_finish = data.start_finish
     //是否做完问卷

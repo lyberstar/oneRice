@@ -4,11 +4,11 @@
 	</view>
 	<view class="btm-box btm-top">
 		<button class="sing_btn btn_back1" catchtap="turnSign">活动报名</button>
-		<view class="back-hover" wx:if="{{isSignUp != 0}}"></view>
+		<view class="back-hover" wx:if="{{captainId != ''}}"></view>
 	</view>
 	<view class="btm-box btm-top">
 		<button class="start_btn btn_back2" catchtap="turnStart">开始挑战</button>
-		<view class="back-hover" wx:if="{{isSignUp != 0}}"></view>
+		<view class="back-hover" wx:if="{{captainId == ''}}"></view>
 	</view>
 	<view class="btm-box btm-top">
 		<button class="start_btn btn_back4" catchtap="turnNews">新闻</button>
