@@ -21,10 +21,10 @@ Page({
     phoneWidth: phoneWidth,
     phoneHeight: phoneHeight,
 
-    teamName:'啊啊啊的香蕉船啊啊啊',
-    name:'小林，小徐，小李',
-    duration:50,
-    doneTime:'2019-8-30'
+    teamName:'',
+    name:'',
+    duration:0,
+    doneTime:''
   },
 
   onLoad: function (options) {
@@ -34,10 +34,10 @@ Page({
     // 之前做的一个项目数据库被黑了，数据全没了，死翘翘！今晚可能通宵手动模拟数据了
     let that = this;
 
-    that.againSave();
-    setTimeout(function(){
-      that.createPoster();
-    },300)
+    // that.againSave();
+    // setTimeout(function(){
+    //   that.createPoster();
+    // },300)
   },
 
   onShow: function () {
@@ -53,18 +53,23 @@ Page({
     let data = res.data
     if (data.code == 0) {
       let nametemp = data.result.captainName
-      if (data.result.part1 != '') {
+      if (data.result.part1 && data.result.part1 != '') {
         nametemp = nametemp + ',' + data.result.part1
       }
-      if (data.result.part2 != '') {
+      if (data.result.part2 && data.result.part2 != '') {
         nametemp = nametemp + ',' + data.result.part2
       }
+      let timetemp = parseInt(data.result.fullTime / 60)
       that.setData({
         teamName:data.result.teamName,
         name:nametemp,
-        doneTime:data.result.finish_time,
-        
+        doneTime:data.result.finish_time.split(' ')[0],
+        duration:timetemp
       })
+      that.againSave();
+      setTimeout(function(){
+        that.createPoster();
+      },300)
     }else{
       wx.showToast({
         title: data.msg,
@@ -81,10 +86,19 @@ Page({
       title: '海报生成中...',
     })
     var that = this;
+    var tempname = that.data.name.split(",")
+    var personcount = 1
+    if (tempname.length == 1) {
+      personcount = '一'
+    }else if (tempname.length == 2) {
+      personcount = '二'
+    }else{
+      personcount = '三'
+    }
     /// 绘制的内容
     const writing = {
       bigImage: 'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/fa28cb66053cf1be8f6b89722af10981f8bdd5a6f59cabca53b72563bb9a9c3e9e6f109761726ebaad054b6948f4cd72?pictype=scale&from=30013&version=3.3.3.3&uin=775345792&fname=%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190829095633.jpg&size=750',
-      artice: '　　恭喜' + that.data.teamName + '战队' + that.data.name + '三位公益挑战者,您们用时' + that.data.duration + '分钟,与邻居进行了友善的交流,并成功完成一勺米公益挑战。您们的爱心和善举将助力打破邻里关系冷漠,激发更多的邻里互动,让社区生活更温暖！',
+      artice: '　　恭喜' + that.data.teamName + '战队' + that.data.name + personcount + '位公益挑战者,您们用时' + that.data.duration + '分钟,与邻居进行了友善的交流,并成功完成一勺米公益挑战。您们的爱心和善举将助力打破邻里关系冷漠,激发更多的邻里互动,让社区生活更温暖！',
       logo: '义仓发展网络 壹基金（logo）',
       greatWall: '时间：' + that.data.doneTime,
 
