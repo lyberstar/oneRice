@@ -27,12 +27,12 @@ Page({
   },
   // 获取Openid
   getOpenid(code) {
-    let token = wx.getStorageSync('token')
-    request('POST', urlList.getOpenId, { code }, token, this.handleSuccess, this.handleFail)
+    request('POST', urlList.getOpenId, { code }, app.globalData.openId, this.handleSuccess, this.handleFail)
   },
   handleSuccess(res) {
     if (res.data.code == 0) {
-      wx.setStorageSync('token',res.data.result.token)
+      // wx.setStorageSync('token',res.data.result.token)
+      app.globalData.openId = res.data.result.openId
       wx.switchTab({
         url: '../index/index'
       })

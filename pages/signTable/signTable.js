@@ -100,19 +100,19 @@ Page({
 
   formSubmit: function (e) {
     let that = this
-    if (!e.detail.value.teamname) {
+    if (!e.detail.value.teamName) {
       wx.showToast({title:'请输入队名',icon:'none'})
       return false
-    }else if (e.detail.value.teamname.length > 12) {
+    }else if (e.detail.value.teamName.length > 12) {
       wx.showToast({title:'队名不超过12个字符',icon:'none'})
       return false
-    }else if (e.detail.value.name1 == 0) {
+    }else if (e.detail.value.captainName == 0) {
       wx.showToast({title:'请输入家长姓名',icon:'none'})
       return false
     }else if (!checkPhone(e.detail.value.phone.trim())) {
       wx.showToast({ title: '请输入手机号', icon: 'none' })
       return false
-    }else if (e.detail.value.part == 0) {
+    }else if (!wx.getStorageSync('partItem') || wx.getStorageSync('partItem') == '') {
       wx.showToast({title:'请选择落地机构',icon:'none'})
       return false
     }else if (that.data.isChecked == false) {
@@ -134,8 +134,7 @@ Page({
           console.log('用户点击确定')
           wx.removeStorage({ key: 'partItem'} )
           let tempData = e.detail.value
-          let token = wx.getStorageSync('token')
-          request('POST', urlList.firstUpload, tempData, token, that.handleSuccess, that.handleFail)
+          request('POST', urlList.firstUpload, tempData, app.globalData.openId, that.handleSuccess, that.handleFail)
         } else if (res.cancel) {
           console.log('用户点击取消')
         }

@@ -3,6 +3,7 @@ import { request, picUpload } from "../../utils/util.js"
 import { urlList, fileUrl } from "../../asset/urlList.js"
 
 var sMD5 = require('../../asset/spark-md5.js')
+const app = getApp()
 
 Page({
 
@@ -22,10 +23,13 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    let id = options.id
+    let { id, getDetail } = options
     that.setData({
       id:id
     })
+    if (getDetail) {
+      this.getTaskDetail()
+    }
     console.log('id:',id)
   },
 
@@ -41,6 +45,17 @@ Page({
    */
   onShow: function () {
 
+  },
+
+  getTaskDetail(){
+    let data = {
+      index:that.data.id
+    }
+    request('GET', urlList.tastDetail, data, app.globalData.openId, this.getUserStatusSuccess, this.getUserStatusFail)
+  },
+
+  getUserStatusSuccess(res){
+    console.log(res)
   },
 
   //上传图片
@@ -185,9 +200,15 @@ Page({
       //md5验证通过，可以上传文件
       let timestamp = Date.parse(new Date())/1000
       let sign = sMD5.hash('key1=QINYUANMAO&timestamp=' + timestamp + '&key2=FILE_SERVER_2019').toUpperCase()
+      let filePathTemp = ''
+      if (that.data.previewImage != '') {
+        filePathTemp = that.data.previewImage
+      }else{
+        filePathTemp = that.data.previewVideo
+      }
       wx.uploadFile({
         url: fileUrl + urlList.uploadFile,
-        filePath: that.data.previewImage,
+        filePath: filePathTemp,
         name: 'file',
         header: {
           'sign': sign,
@@ -197,7 +218,6 @@ Page({
           'md5': that.data.md5
         },
         success (res){
-          let token = wx.getStorageSync('token')
           let fileType = ''
           if (that.data.previewImage != '') {
             fileType = 1
@@ -207,19 +227,18 @@ Page({
           let data = {
             fileType:fileType,
             fileUrl:res.data.result.fileUrl,
-            index:0
+            index:that.data.id
           }
-          request('POST', urlList.sigleTask, data, token, that.submitSuccess, that.submitFail)
+          request('POST', urlList.sigleTask, data, app.globalData.openId, that.submitSuccess, that.submitFail)
         }
       })
     }else{
-      let token = wx.getStorageSync('token')
       let data = {
         fileType:1,
         fileUrl:res.data.result.fileUrl,
         index:0
       }
-      request('POST', urlList.sigleTask, data, token, that.submitSuccess, that.submitFail)
+      request('POST', urlList.sigleTask, data, app.globalData.openId, that.submitSuccess, that.submitFail)
     }
   },
 

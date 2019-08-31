@@ -47,8 +47,7 @@ Page({
 
   //获取用户状态
   getUserStatus(){
-    let token = wx.getStorageSync('token')
-    request('POST', urlList.getUserStatus, {}, token, this.getUserStatusSuccess, this.getUserStatusFail)
+    request('POST', urlList.getUserStatus, {}, app.globalData.openId, this.getUserStatusSuccess, this.getUserStatusFail)
   },
 
   getUserStatusSuccess(res){
@@ -68,6 +67,13 @@ Page({
     let id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url:'/pages/taskDetail/taskDetail?id=' + id
+    })
+  },
+
+  goDetail() {
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/taskDetail/taskDetail?id=' + id + '&getDetail = 1'
     })
   },
 

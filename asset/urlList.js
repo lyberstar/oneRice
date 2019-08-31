@@ -2,7 +2,8 @@ const urlList = {
   getOpenId: '/wx/login', // 换取sessionkey
   getUserStatus: '/wx/get_user_info',  //获取用户状态
   firstUpload: '/task/list_upload',   //报名
-  sigleTask: '/task/task_upload',
+  sigleTask: '/task/task_upload',     //单个任务提交
+  tastDetail: '/task/task_detail',    //任务详情   
   getActivityDetail: '/be/getAboutDetail', // 获取活动介绍
   rankList: '/rankList', // 获取区域个人排行列表
   newsList: '/be/getNewsList',  //获取新闻列表

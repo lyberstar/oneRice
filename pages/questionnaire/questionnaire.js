@@ -38,10 +38,12 @@ Page({
         question_style:2,
         answer_list:[
           {
-            answer_name: "是"
+            answer_name: "是",
+            answer_code: "A",
           },
           {
-            answer_name: "否"
+            answer_name: "否",
+            answer_code: "B",
           }
         ]
       },
@@ -51,16 +53,20 @@ Page({
         question_style:2,
         answer_list:[
           {
-            answer_name: "亲密"
+            answer_name: "亲密",
+            answer_code: "A",
           },
           {
-            answer_name: "舒适"
+            answer_name: "舒适",
+            answer_code: "B",
           },
           {
-            answer_name: "疏离"
+            answer_name: "疏离",
+            answer_code: "C",
           },
           {
-            answer_name: "冷漠"
+            answer_name: "冷漠",
+            answer_code: "D",
           }
         ]
       }
@@ -164,10 +170,35 @@ Page({
       question1: new_itmes  
     })
   },
-
+  getQ1Answer(question_0001) {
+    let new_question_0001 = []
+    question_0001.map(item => {
+      switch(item) {
+        case "0":
+          new_question_0001.push('A')
+          break
+        case "1":
+          new_question_0001.push('B')
+          break
+        case "2":
+          new_question_0001.push('C')
+          break
+        case "3":
+          new_question_0001.push('D')
+          break
+        case "4":
+          new_question_0001.push('E')
+          break
+      }
+    })
+    return new_question_0001.join()
+  },
   formSubmit:function(e){
     let that = this
-    console.log(e.detail.value)
+    let { question_0001, question_0002, question_0003 } = e.detail.value
+    question_0001 = this.getQ1Answer(question_0001)
+    const answer = {question_0001, question_0002, question_0003}
+    console.log(answer)
     wx.navigateTo({
       url:'/pages/poster/poster'
     })

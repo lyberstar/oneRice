@@ -21,7 +21,7 @@
         <text style='color:#ccc;font-wight:100;'>(单选)</text>
         <radio-group class="radio-group" bindchange="radioChange" name="{{item.question_id}}">
           <label class="radio" wx:for="{{item.answer_list}}" wx:key="item" wx:for-index="num">
-            <radio value="{{num}}" checked="{{item.checked}}" class='inner_box' color='#0276C9'/>
+            <radio value="{{item.answer_code}}" checked="{{item.checked}}" class='inner_box' color='#0276C9'/>
             {{item.answer_name}}
           </label>
         </radio-group>

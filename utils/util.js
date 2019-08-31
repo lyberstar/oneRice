@@ -7,12 +7,12 @@ const checkPhone = phone => {
   return reg.test(phone)
 }
 
-const request = (method, url, data, token, success, fail, complete) => {
+const request = (method, url, data, openId, success, fail, complete) => {
   wx.request({
     url: baseUrl + url,
     header: {
       'content-type': 'application/x-www-form-urlencoded',
-      token,
+      openId,
     },
     data,
     method,

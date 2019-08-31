@@ -3,7 +3,7 @@ import { request, picUpload } from "../../utils/util.js"
 import { urlList, fileUrl } from "../../asset/urlList.js"
 
 var sMD5 = require('../../asset/spark-md5.js')
-
+const app = getApp()
 Page({
 
   /**
@@ -181,23 +181,21 @@ Page({
           'md5': that.data.md5
         },
         success (res){
-          let token = wx.getStorageSync('token')
           let data = {
             fileType:1,
             fileUrl:res.data.result.fileUrl,
             index:0
           }
-          request('POST', urlList.sigleTask, data, token, that.submitSuccess, that.submitFail)
+          request('POST', urlList.sigleTask, data, app.globalData.openId, that.submitSuccess, that.submitFail)
         }
       })
     }else{
-      let token = wx.getStorageSync('token')
       let data = {
         fileType:1,
         fileUrl:res.data.result.fileUrl,
         index:0
       }
-      request('POST', urlList.sigleTask, data, token, that.submitSuccess, that.submitFail)
+      request('POST', urlList.sigleTask, data, app.globalData.openId, that.submitSuccess, that.submitFail)
     }
   },
 
