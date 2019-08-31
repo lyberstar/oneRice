@@ -64,7 +64,8 @@ Page({
       wx.showLoading({
         title: '加载中',
       })
-      request('POST', urlList.newsList, data, app.globalData.openId, this.getPersonRankSuccess, this.getPersonRankFail)
+      let token = wx.getStorageSync('token')
+      request('POST', urlList.newsList, data, token, this.getPersonRankSuccess, this.getPersonRankFail)
     }else{
       console.log('没数据了')
       wx.hideLoading()

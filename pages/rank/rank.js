@@ -74,7 +74,8 @@ Page({
     setTimeout(function () {
       wx.hideLoading()
     }, 600)
-    request('POST', urlList.rankList, data, app.globalData.openId, this.getPersonRankSuccess, this.getPersonRankFail)
+    let token = wx.getStorageSync('token')
+    request('POST', urlList.rankList, data, token, this.getPersonRankSuccess, this.getPersonRankFail)
     // 1000ms之后才可以继续加载，防止加载请求过多
     setTimeout(function () {
       that.setData({

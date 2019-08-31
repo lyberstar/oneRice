@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/allowDetail/allowDetail",
     "pages/index/index",
     "pages/firstPoster/firstPoster",
     "pages/partList/partList",
@@ -14,7 +15,6 @@
     "pages/questionnaire/questionnaire",
     "pages/poster/poster",
     "pages/activityIntro/activityIntro",
-    "pages/allowDetail/allowDetail",
     "pages/mySteps/mySteps",
     "pages/rank/rank",
     "pages/form/form",

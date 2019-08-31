@@ -25,7 +25,8 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    request('POST', urlList.newsDetail, { id: id }, app.globalData.openId, this.getActivityDetailSuccess)
+    let token = wx.getStorageSync('token')
+    request('POST', urlList.newsDetail, { id: id }, token, this.getActivityDetailSuccess)
   },
   getActivityDetailSuccess(res) {
     const that = this

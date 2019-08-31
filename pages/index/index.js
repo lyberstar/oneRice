@@ -35,7 +35,8 @@ Page({
 
   //获取用户状态
   getUserStatus(){
-    request('POST', urlList.getUserStatus, {}, app.globalData.openId, this.getUserStatusSuccess, this.getUserStatusFail)
+    let token = wx.getStorageSync('token')
+    request('GET', urlList.getUserStatus, {}, token, this.getUserStatusSuccess, this.getUserStatusFail)
   },
 
   getUserStatusSuccess(res){

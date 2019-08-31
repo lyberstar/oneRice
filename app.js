@@ -3,12 +3,18 @@ import { request } from "utils/util.js"
 
 App({
   onLaunch () {
-    wx.login({
-      success: res => {
-        // 利用code获取唯一标示openid
-        this.getOpenid(res.code)
-      }
-    })
+    // wx.login({
+    //   success: res => {
+    //     // 利用code获取唯一标示openid
+    //     this.getOpenid(res.code)
+    //   }
+    // })
+    let token = wx.getStorageSync('token')
+    if (token != '') {
+      wx.switchTab({
+        url: '/pages/index/index'
+      })
+    }
   },
   handleSuccess(res) {
     if (res.data.ret == 0) {
@@ -34,6 +40,7 @@ App({
   globalData: {
     userInfo: {},
     openId: '',
+    token: '',
     isExist: false,
     start_finish:false,  //是否做完开始上传的第一步
     ask_finish:false,   //是否做完问卷

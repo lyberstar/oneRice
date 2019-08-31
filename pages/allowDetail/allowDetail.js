@@ -27,21 +27,25 @@ Page({
   },
   // 获取Openid
   getOpenid(code) {
-    request('POST', urlList.getOpenId, { code }, app.globalData.openId, this.handleSuccess, this.handleFail)
+    let token = wx.getStorageSync('token')
+    request('POST', urlList.getOpenId, { code }, token, this.handleSuccess, this.handleFail)
   },
   handleSuccess(res) {
     if (res.data.code == 0) {
-      app.globalData.openId = res.data.result.openId
-      app.globalData.isExist = res.data.result.isExist
-      if (res.data.result.isExist) {
-        wx.switchTab({
-          url: '../index/index'
-        })
-      } else {
-        wx.navigateTo({
-          url: '../form/form',
-        })
-      }
+      wx.setStorageSync('token',res.data.result.token)
+      wx.switchTab({
+        url: '../index/index'
+      })
+      // app.globalData.isExist = res.data.result.isExist
+      // if (res.data.result.isExist) {
+      //   wx.switchTab({
+      //     url: '../index/index'
+      //   })
+      // } else {
+      //   wx.navigateTo({
+      //     url: '../form/form',
+      //   })
+      // }
     } else {
       console.log('get openid失败', res.data)
     }

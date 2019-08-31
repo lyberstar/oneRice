@@ -1,6 +1,6 @@
 const urlList = {
-  getOpenId: '/login', // 换取sessionkey
-  getUserStatus: '/get_user_info',  //获取用户状态
+  getOpenId: '/wx/login', // 换取sessionkey
+  getUserStatus: '/wx/get_user_info',  //获取用户状态
   getActivityDetail: '/be/getAboutDetail', // 获取活动介绍
   rankList: '/rankList', // 获取区域个人排行列表
   newsList: '/be/getNewsList',  //获取新闻列表
@@ -9,7 +9,9 @@ const urlList = {
   testMD5: '/file/queryByMd5'
 }
 
-const baseUrl = 'https://www.easy-mock.com/mock/5d513bbb5499932132a80e4d/mock'
+// const baseUrl = 'https://www.easy-mock.com/mock/5d513bbb5499932132a80e4d/mock'
+
+const baseUrl = 'http://25u4199n99.qicp.vip:12081'
 
 const fileUrl = 'https://files.cdstwlkj.com'
 
