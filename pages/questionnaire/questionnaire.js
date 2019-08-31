@@ -196,6 +196,14 @@ Page({
   formSubmit:function(e){
     let that = this
     let { question_0001, question_0002, question_0003 } = e.detail.value
+    if (!question_0001 || !question_0002 || !question_0003) {
+      wx.showToast({
+        title: '请完成所有题目',
+        icon: 'none',
+        duration: 1000,
+      });
+      return
+    }
     question_0001 = this.getQ1Answer(question_0001)
     const answer = {question_0001, question_0002, question_0003}
     console.log(answer)
