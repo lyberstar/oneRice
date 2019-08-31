@@ -74,8 +74,7 @@ Page({
     setTimeout(function () {
       wx.hideLoading()
     }, 600)
-    let token = wx.getStorageSync('token')
-    request('POST', urlList.rankList, data, token, this.getPersonRankSuccess, this.getPersonRankFail)
+    request('POST', urlList.rankList, data, app.globalData.openId, this.getPersonRankSuccess, this.getPersonRankFail)
     // 1000ms之后才可以继续加载，防止加载请求过多
     setTimeout(function () {
       that.setData({
@@ -84,8 +83,9 @@ Page({
     }, 1000)
   },
   getPersonRankSuccess(res) {
-    let { rankList, freshData, pageIndex } = this.data
-    const newRankList = freshData ? res.data.result.data : [...rankList, ...res.data.result.data]
+    let { rankList, freshData, pageIndex, rankType } = this.data
+    const pageRankList = rankType === 0 ? res.data.result.regRank.data : res.data.result.partRank.data
+    const newRankList = freshData ? pageRankList : [...rankList, ...pageRankList]
     const newPageIndex = freshData ? 1 : pageIndex + 1
     this.setData({
       rankList: newRankList,
