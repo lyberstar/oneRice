@@ -1,3 +1,7 @@
+import { IMG_LIST } from "../../asset/imgList.js"
+import { request, getAreaName } from "../../utils/util.js"
+import { urlList } from "../../asset/urlList.js"
+const app = getApp()
 
 /// 获取倍率
 const raterpx = 750.0 / wx.getSystemInfoSync().windowWidth;
@@ -34,6 +38,40 @@ Page({
     setTimeout(function(){
       that.createPoster();
     },300)
+  },
+
+  onShow: function () {
+    this.getUserStatus()
+  },
+
+  getUserStatus(){
+    request('GET', urlList.getUserStatus, {}, app.globalData.openId, this.getUserStatusSuccess, this.getUserStatusFail)
+  },
+
+  getUserStatusSuccess(res){
+    let that = this
+    let data = res.data
+    if (data.code == 0) {
+      let nametemp = data.result.captainName
+      if (data.result.part1 != '') {
+        nametemp = nametemp + ',' + data.result.part1
+      }
+      if (data.result.part2 != '') {
+        nametemp = nametemp + ',' + data.result.part2
+      }
+      that.setData({
+        teamName:data.result.teamName,
+        name:nametemp,
+        doneTime:data.result.finish_time,
+        
+      })
+    }else{
+      wx.showToast({
+        title: data.msg,
+        icon: 'none',
+        duration: 1500
+      })
+    }
   },
 
   /// 创建海报

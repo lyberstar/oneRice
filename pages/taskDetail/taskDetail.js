@@ -272,8 +272,8 @@ Page({
         duration: 1000,
         mask: true,
         success: () => {
-          wx.redirectTo({
-            url: '/pages/taskList/taskList'
+          wx.navigateBack({
+            delta: 1
           })
         }
       })

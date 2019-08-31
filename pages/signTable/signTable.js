@@ -120,7 +120,7 @@ Page({
       return false
     }
     let tempLoc = e.detail.value.regid
-    e.detail.value.regid = idList[e.detail.value.regid[1]]
+    e.detail.value.regId = idList[e.detail.value.regid[1]]
     let partTemp = JSON.parse(wx.getStorageSync('partItem'))
     e.detail.value.partName = partTemp.partName
     e.detail.value.partCode = partTemp.partCode

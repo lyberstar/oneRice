@@ -159,7 +159,8 @@ Page({
   },
 
   uploadAnswer(answer){
-    request('POST', urlList.uploadAnswer, answer, app.globalData.openId, this.uploadAnswerSuccess)
+    let temp = JSON.stringify(answer)
+    request('POST', urlList.uploadAnswer, {survey: temp}, app.globalData.openId, this.uploadAnswerSuccess)
   },
 
   uploadAnswerSuccess(res){

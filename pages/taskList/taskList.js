@@ -80,9 +80,16 @@ Page({
   //提交
   submit:function(){
     let that = this
-    wx.redirectTo({
-      url:'/pages/questionnaire/questionnaire'
-    })
+    if (app.globalData.ask_finish) {
+      wx.redirectTo({
+        url:'/pages/poster/poster'
+      })
+    }else{
+      wx.redirectTo({
+        url:'/pages/questionnaire/questionnaire'
+      })
+    }
+    
   },
 
   /**
