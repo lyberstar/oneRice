@@ -44,7 +44,7 @@ Page({
     let data = res.data
     if (data.code == 0) {
       that.setData({
-        captainId:data.captainId
+        captainId:data.result.captainId
       })
     }else{
       wx.showToast({
@@ -55,9 +55,9 @@ Page({
     }
     
     //是否做完开始上传的第一步
-    app.globalData.start_finish = data.start_finish
+    app.globalData.start_finish = data.result.start_finish
     //是否做完问卷
-    app.globalData.ask_finish = data.ask_finish
+    app.globalData.ask_finish = data.result.ask_finish
   },
 
   getUserStatusFail() {
@@ -74,7 +74,7 @@ Page({
   turnStart:function(){
     let that = this
     let start_finish = app.globalData.start_finish
-    if (start_finish == 0) {
+    if (start_finish == false) {
       wx.navigateTo({
         url:'/pages/firstSign/firstSign'
       })
