@@ -11,15 +11,15 @@ Page({
    */
   data: {
     itemData:[
-      {'name':'第一户','id':'001'},
-      {'name':'第二户','id':'002'},
-      {'name':'第三户','id':'003'},
-      {'name':'第四户','id':'004'},
-      {'name':'第五户','id':'005'},
-      {'name':'第六户','id':'006'},
-      {'name':'第七户','id':'007'},
-      {'name':'第八户','id':'008'},
-      {'name':'第九户','id':'009'}
+      {'name':'第一户','id':'1'},
+      {'name':'第二户','id':'2'},
+      {'name':'第三户','id':'3'},
+      {'name':'第四户','id':'4'},
+      {'name':'第五户','id':'5'},
+      {'name':'第六户','id':'6'},
+      {'name':'第七户','id':'7'},
+      {'name':'第八户','id':'8'},
+      {'name':'第九户','id':'9'}
     ],
     next_index:0
   },
@@ -47,7 +47,8 @@ Page({
 
   //获取用户状态
   getUserStatus(){
-    request('POST', urlList.getUserStatus, {}, app.globalData.openId, this.getUserStatusSuccess, this.getUserStatusFail)
+    let token = wx.getStorageSync('token')
+    request('POST', urlList.getUserStatus, {}, token, this.getUserStatusSuccess, this.getUserStatusFail)
   },
 
   getUserStatusSuccess(res){

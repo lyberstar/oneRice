@@ -1,4 +1,7 @@
 // pages/taskDetail/taskDetail.js
+import { request, picUpload } from "../../utils/util.js"
+import { urlList, fileUrl } from "../../asset/urlList.js"
+
 var sMD5 = require('../../asset/spark-md5.js')
 
 Page({
@@ -10,7 +13,8 @@ Page({
     id:'',
     previewImage:'',
     previewVideo:'',
-    videoContext:''
+    videoContext:'',
+    md5:''
   },
 
   /**
@@ -45,7 +49,7 @@ Page({
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
+      sourceType: ['camera'],
       success(res) {
         // tempFilePath可以作为img标签的src属性显示图片
         let previewImage = that.data.previewImage
@@ -65,6 +69,9 @@ Page({
             spark.append(res.data);
             var hexHash = spark.end(false);
             console.log('md5 test:',hexHash)
+            that.setData({
+              md5:hexHash
+            })
           }
         })
       }
@@ -75,8 +82,8 @@ Page({
   uploadVideo: function () {
     let that = this;
     wx.chooseVideo({
-      sourceType: ['album','camera'],
-      maxDuration: 60,
+      sourceType: ['camera'],
+      maxDuration: 10,
       camera: 'back',
       success(res) {
         console.log(res.tempFilePath)
@@ -95,6 +102,9 @@ Page({
             spark.append(res.data);
             var hexHash = spark.end(false);
             console.log('md5 test:',hexHash)
+            that.setData({
+              md5:hexHash
+            })
           }
         })
       }
@@ -154,14 +164,85 @@ Page({
       success (res) {
         if (res.confirm) {
           console.log('用户点击确定')
-          wx.redirectTo({
-            url:'/pages/taskList/taskList'
-          })
+          let timestamp = Date.parse(new Date())/1000
+          let sign = sMD5.hash('key1=QINYUANMAO&timestamp=' + timestamp + '&key2=FILE_SERVER_2019').toUpperCase()
+          let data = {
+            md5:that.data.md5
+          }
+
+          picUpload('POST', urlList.testMD5, data, sign, timestamp, that.getTestMD5Success, that.getTestMD5Fail)
         } else if (res.cancel) {
           console.log('用户点击取消')
         }
       }
     })
+  },
+
+  getTestMD5Success(res){
+    let that = this
+    console.log('res:',res)
+    if (res.data.code == 1) {
+      //md5验证通过，可以上传文件
+      let timestamp = Date.parse(new Date())/1000
+      let sign = sMD5.hash('key1=QINYUANMAO&timestamp=' + timestamp + '&key2=FILE_SERVER_2019').toUpperCase()
+      wx.uploadFile({
+        url: fileUrl + urlList.uploadFile,
+        filePath: that.data.previewImage,
+        name: 'file',
+        header: {
+          'sign': sign,
+          'timestamp': timestamp
+        },
+        formData: {
+          'md5': that.data.md5
+        },
+        success (res){
+          let token = wx.getStorageSync('token')
+          let fileType = ''
+          if (that.data.previewImage != '') {
+            fileType = 1
+          }else if (that.data.previewVideo != '') {
+            fileType = 2
+          }
+          let data = {
+            fileType:fileType,
+            fileUrl:res.data.result.fileUrl,
+            index:0
+          }
+          request('POST', urlList.sigleTask, data, token, that.submitSuccess, that.submitFail)
+        }
+      })
+    }else{
+      let token = wx.getStorageSync('token')
+      let data = {
+        fileType:1,
+        fileUrl:res.data.result.fileUrl,
+        index:0
+      }
+      request('POST', urlList.sigleTask, data, token, that.submitSuccess, that.submitFail)
+    }
+  },
+
+  submitSuccess(res){
+    if (res.data.code == 0) {
+      wx.showToast({
+        title: '上传成功',
+        icon: 'success',
+        duration: 1000,
+        mask: true,
+        success: () => {
+          wx.redirectTo({
+            url: '/pages/taskList/taskList'
+          })
+        }
+      })
+    }else{
+      wx.showToast({
+        title: res.data.msg,
+        icon: 'none',
+        duration: 1000
+      })
+    }
   },
 
   /**

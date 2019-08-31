@@ -1,11 +1,11 @@
 <!--pages/taskList/taskList.wxml-->
 <view class="body_contain">
-  <view class="station" wx:for="{{itemData}}" wx:for-index="index" wx:key="station" wx:for-item="dayItem" data-id="{{dayItem.id}}">
+  <view class="station" wx:for="{{itemData}}" wx:for-index="index" wx:key="station" wx:for-item="dayItem">
     <view class="list_box" wx:if="{{index < next_index}}">
       <image class="done_img" src="../../img/have_done.png"></image>
       <view class="done_content">{{dayItem.name}}</view>
     </view>
-    <view class="list_box" wx:if="{{index == next_index}}" catchtap="station">
+    <view class="list_box" wx:if="{{index == next_index}}" data-id="{{dayItem.id}}" catchtap="station">
       <view class="doing_content">{{dayItem.name}}</view>
     </view>
     <view class="list_box" wx:if="{{index > next_index}}">

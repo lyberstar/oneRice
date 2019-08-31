@@ -1,6 +1,6 @@
 // pages/firstSign/firstSign.js
 import { request, picUpload } from "../../utils/util.js"
-import { urlList } from "../../asset/urlList.js"
+import { urlList, fileUrl } from "../../asset/urlList.js"
 
 var sMD5 = require('../../asset/spark-md5.js')
 
@@ -42,7 +42,7 @@ Page({
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
+      sourceType: ['camera'],
       success(res) {
         // tempFilePath可以作为img标签的src属性显示图片
         let previewImage = that.data.previewImage
@@ -74,8 +74,8 @@ Page({
   uploadVideo: function () {
     let that = this;
     wx.chooseVideo({
-      sourceType: ['album','camera'],
-      maxDuration: 60,
+      sourceType: ['camera'],
+      maxDuration: 10,
       camera: 'back',
       success(res) {
         console.log(res.tempFilePath)
@@ -140,8 +140,8 @@ Page({
       success (res) {
         if (res.confirm) {
           console.log('用户点击确定')
-          let timestamp = (new Date()).getTime()
-          let sign = sMD5.hash('key1=QINYUANMAO&timestamp=' + timestamp + '&key2=FILE_SERVER_2019')
+          let timestamp = Date.parse(new Date())/1000
+          let sign = sMD5.hash('key1=QINYUANMAO&timestamp=' + timestamp + '&key2=FILE_SERVER_2019').toUpperCase()
           let data = {
             md5:that.data.md5
           }
@@ -163,10 +163,64 @@ Page({
   },
 
   getTestMD5Success(res){
+    let that = this
     console.log('res:',res)
-    wx.redirectTo({
-      url:'/pages/taskList/taskList'
-    })
+    if (res.data.code == 1) {
+      //md5验证通过，可以上传文件
+      let timestamp = Date.parse(new Date())/1000
+      let sign = sMD5.hash('key1=QINYUANMAO&timestamp=' + timestamp + '&key2=FILE_SERVER_2019').toUpperCase()
+      wx.uploadFile({
+        url: fileUrl + urlList.uploadFile,
+        filePath: that.data.previewImage,
+        name: 'file',
+        header: {
+          'sign': sign,
+          'timestamp': timestamp
+        },
+        formData: {
+          'md5': that.data.md5
+        },
+        success (res){
+          let token = wx.getStorageSync('token')
+          let data = {
+            fileType:1,
+            fileUrl:res.data.result.fileUrl,
+            index:0
+          }
+          request('POST', urlList.sigleTask, data, token, that.submitSuccess, that.submitFail)
+        }
+      })
+    }else{
+      let token = wx.getStorageSync('token')
+      let data = {
+        fileType:1,
+        fileUrl:res.data.result.fileUrl,
+        index:0
+      }
+      request('POST', urlList.sigleTask, data, token, that.submitSuccess, that.submitFail)
+    }
+  },
+
+  submitSuccess(res){
+    if (res.data.code == 0) {
+      wx.showToast({
+        title: '上传成功',
+        icon: 'success',
+        duration: 1000,
+        mask: true,
+        success: () => {
+          wx.redirectTo({
+            url: '/pages/taskList/taskList'
+          })
+        }
+      })
+    }else{
+      wx.showToast({
+        title: res.data.msg,
+        icon: 'none',
+        duration: 1000
+      })
+    }
   },
 
   /**
