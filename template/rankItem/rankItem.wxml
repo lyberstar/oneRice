@@ -6,14 +6,14 @@
         <image wx-if='{{rank <= 2}}' class='rank-img' src='{{rankImg[rank]}}'></image>
         <!-- <image src='{{avatar == "undefined" ? defaultAvatar : avatar}}' class='avatar'></image> -->
         <view class='name-area'>
-          <view class='name'>{{name}}</view>
+          <view class='name'>{{partName || regName}}</view>
           <!-- <view class='area'>{{areaName || myRank.areaName}}</view> -->
         </view>
       </view>
       <view class='right-rank'>
-        <view class='steps'>{{areaName || myRank.areaName}}</view>
+        <view class="">{{rankType === 0 ? '报名人数' : '完成挑战人数'}}</view>
+        <view class='steps'>{{total}}</view>
       </view>
     </view>
-    <view wx-if='{{!isUser}}' class='rank-border-bottom'></view>
   </view>
 </template>
