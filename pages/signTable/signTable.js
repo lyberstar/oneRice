@@ -6,6 +6,7 @@ import { cityList } from "../../asset/cityList.js"
 const app = getApp()
 
 var list = []
+var idList = ["52"]
 
 Page({
 
@@ -66,6 +67,7 @@ Page({
       "multiIndex[0]": e.detail.value[0],
       "multiIndex[1]": e.detail.value[1]
     })
+    console.log(e)
   },
 
   bindMultiPickerColumnChange: function (e){
@@ -73,9 +75,11 @@ Page({
     switch (e.detail.column){
       case 0:
         list = []
+        idList = []
         for (var i = 0; i < that.data.objectMultiArray.length;i++){
           if (that.data.objectMultiArray[i].parid == that.data.objectMultiArray[e.detail.value].regid){
             list.push(that.data.objectMultiArray[i].regname)
+            idList.push(that.data.objectMultiArray[i].regid)
           }
         }
         that.setData({
@@ -83,6 +87,7 @@ Page({
           "multiIndex[0]": e.detail.value,
           "multiIndex[1]" : 0
         })
+        console.log(idList)
     }
   },
 
@@ -114,6 +119,12 @@ Page({
       wx.showToast({title:'请阅读并同意《免责声明》',icon:'none'})
       return false
     }
+    let tempLoc = e.detail.value.regid
+    e.detail.value.regid = idList[e.detail.value.regid[1]]
+    let partTemp = JSON.parse(wx.getStorageSync('partItem'))
+    e.detail.value.partName = partTemp.partName
+    e.detail.value.partCode = partTemp.partCode
+    console.log('tempLoc：', tempLoc)
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     wx.showModal({
       title: '提示',
@@ -122,43 +133,37 @@ Page({
         if (res.confirm) {
           console.log('用户点击确定')
           wx.removeStorage({ key: 'partItem'} )
-          wx.navigateBack({
-            delta: 1
-          })
+          let tempData = e.detail.value
+          let token = wx.getStorageSync('token')
+          request('POST', urlList.firstUpload, tempData, token, that.handleSuccess, that.handleFail)
         } else if (res.cancel) {
           console.log('用户点击取消')
         }
       }
     })
-    // wx.request({
-    //   url: 'https://www.edwing.com.cn/zhaosheng/index.php/home/student/add', //仅为示例，并非真实的接口地址
-    //   method:'POST',
-    //   data: e.detail.value,
-    //   header: {
-    //     'content-type': 'application/x-www-form-urlencoded' // 默认值
-    //   },
-    //   success(res) {
-    //     wx.hideLoading()
-    //     if(res.statusCode == 200){
-    //       if (res.data.statusCode == 201){
-    //       wx.showToast({title:'提交成功'})
-    //       wx.removeStorage({ key: 'partItem'} )
-    //       setTimeout(function(){wx.navigateBack({
-    //         delta: 1
-    //       })}, 800)
-    //     }
-    //       else
-    //         wx.showToast({ title: '提交失败', icon: 'none' })
-    //     }
-    //     else
-    //       wx.showToast({ title: '提交失败', icon:'none'})
-    //     console.log(res)
-    //   },
-    //   fail(res){
-    //     wx.hideLoading()
-    //     console.log('fail'+res.data)
-    //   }
-    // })
+  },
+
+  handleSuccess(res){
+    let that = this
+    let data = res.data
+    if (data.code == 0) {
+      wx.showToast({
+        title: '报名成功',
+        icon: 'none',
+        duration: 1500
+      })
+      setTimeout(function () {
+        wx.navigateBack({
+          delta: 1
+        })
+      }, 1000)
+    }else{
+      wx.showToast({
+        title: data.msg,
+        icon: 'none',
+        duration: 1500
+      })
+    }
   },
 
   turnTip:function(){

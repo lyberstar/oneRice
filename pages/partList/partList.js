@@ -27,6 +27,7 @@ Page({
         }
       }
     )
+    console.log('partItem:',JSON.parse(wx.getStorageSync('partItem')))
   },
 
   /**

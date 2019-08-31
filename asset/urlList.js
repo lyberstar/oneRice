@@ -1,6 +1,7 @@
 const urlList = {
   getOpenId: '/wx/login', // 换取sessionkey
   getUserStatus: '/wx/get_user_info',  //获取用户状态
+  firstUpload: '/quest/list_upload',
   getActivityDetail: '/be/getAboutDetail', // 获取活动介绍
   rankList: '/rankList', // 获取区域个人排行列表
   newsList: '/be/getNewsList',  //获取新闻列表
