@@ -9,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    captainId:''
+    captainId:'',
+    isSignUp:false
   },
 
   /**
@@ -43,7 +44,8 @@ Page({
     let data = res.data
     if (data.code == 0) {
       that.setData({
-        captainId:data.result.captainId
+        captainId:data.result.captainId,
+        isSignUp:data.result.isSignUp
       })
     }else{
       wx.showToast({

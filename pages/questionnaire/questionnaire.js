@@ -154,6 +154,9 @@ Page({
       });
       return
     }
+    wx.showLoading({
+      title: '提交中',
+    })
     const answer = {question_0001, question_0002, question_0003}
     this.uploadAnswer(answer)
   },
@@ -165,6 +168,7 @@ Page({
 
   uploadAnswerSuccess(res){
     if (res.data.code == 0) {
+      wx.hideLoading()
       wx.redirectTo({
         url:'/pages/poster/poster'
       })

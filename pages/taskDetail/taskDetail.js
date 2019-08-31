@@ -200,6 +200,9 @@ Page({
       success (res) {
         if (res.confirm) {
           console.log('用户点击确定')
+          wx.showLoading({
+            title: '提交中',
+          })
           let timestamp = Date.parse(new Date())/1000
           let sign = sMD5.hash('key1=QINYUANMAO&timestamp=' + timestamp + '&key2=FILE_SERVER_2019').toUpperCase()
           let data = {
@@ -266,6 +269,7 @@ Page({
 
   submitSuccess(res){
     if (res.data.code == 0) {
+      wx.hideLoading()
       wx.showToast({
         title: '上传成功',
         icon: 'success',
@@ -278,6 +282,7 @@ Page({
         }
       })
     }else{
+      wx.hideLoading()
       wx.showToast({
         title: res.data.msg,
         icon: 'none',
