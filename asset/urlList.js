@@ -3,11 +3,12 @@ const urlList = {
   getUserStatus: '/wx/get_user_info',  //获取用户状态
   firstUpload: '/task/list_upload',   //报名
   sigleTask: '/task/task_upload',     //单个任务提交
+  uploadAnswer: '/task/ask_upload',     //单个任务提交
   tastDetail: '/task/task_detail',    //任务详情   
-  getActivityDetail: '/be/getAboutDetail', // 获取活动介绍
+  getActivityDetail: '/task/cover_intro', // 获取活动介绍
   rankList: '/rankList', // 获取区域个人排行列表
-  newsList: '/be/getNewsList',  //获取新闻列表
-  newsDetail: '/be/getNewsDetail', //新闻详情
+  newsList: '/wx/news',  //获取新闻列表
+  newsDetail: '/wx/newsDetail', //新闻详情
 
   testMD5: '/file/queryByMd5',
   uploadFile: '/file/uploadFile'

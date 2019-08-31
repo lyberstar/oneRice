@@ -5,22 +5,23 @@
         <view class="img_box" bindtap="uploadImage" wx:if="{{previewImage == '' && previewVideo == ''}}">
             <image src="../../img/up_img.png" />
         </view>
-        <view class="img_box" bindtap="uploadVideo" wx:if="{{previewImage == '' && previewVideo == ''}}">
+        <view class="img_box" bindtap="uploadVideo" wx:if="{{previewImage == '' && previewVideo == '' && id != 9}}">
             <image src="../../img/up_video.png" />
         </view>
         <view class="preview_box" wx:if="{{previewImage != ''}}">
-            <image class="delete" src="../../img/close.png" data-type="0" catchtap="deleteSrc" />
+            <image class="delete" src="../../img/close.png" data-type="0" catchtap="deleteSrc" wx:if="{{!review}}" />
             <image class="preview" src="{{previewImage}}" data-src="{{previewImage}}" bindtap='uploadImage' mode="aspectFill" />
         </view>
         <view class="preview_box" wx:if="{{previewVideo != ''}}">
-            <image class="delete" src="../../img/close.png" data-type="1" catchtap="deleteSrc" />
+            <image class="delete" src="../../img/close.png" data-type="1" catchtap="deleteSrc" wx:if="{{!review}}" />
             <video id="myVideo" class="preview" src="{{previewVideo}}" data-src="{{previewVideo}}" autoplay="{{false}}"></video>
         </view>
     </view>
     <view class="info_contain">
-		<template is="taskIntro"></template>
+		<template is="taskIntro" wx:if="{{!review}}"></template>
+        <view wx:else class="have-done">已完成</view>
 	</view>
-    <view class="btn_contain">
+    <view class="btn_contain" wx:if="{{!review}}">
         <button catchtap="submit" class="submit">上传</button>
     </view>
 </view>

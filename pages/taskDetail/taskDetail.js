@@ -15,7 +15,8 @@ Page({
     previewImage:'',
     previewVideo:'',
     videoContext:'',
-    md5:''
+    md5:'',
+    review:false
   },
 
   /**
@@ -28,7 +29,10 @@ Page({
       id:id
     })
     if (getDetail) {
-      this.getTaskDetail()
+      that.setData({
+        review:true
+      })
+      that.getTaskDetail()
     }
     console.log('id:',id)
   },
@@ -48,6 +52,7 @@ Page({
   },
 
   getTaskDetail(){
+    let that = this
     let data = {
       index:that.data.id
     }
@@ -55,12 +60,25 @@ Page({
   },
 
   getUserStatusSuccess(res){
-    console.log(res)
+    console.log(res.data.result.fileType)
+    let that = this
+    if (res.data.result.fileType == 1) {
+      that.setData({
+        previewImage:res.data.result.fileUrl
+      })
+    }else{
+      that.setData({
+        previewVideo:res.data.result.fileUrl
+      })
+    }
   },
 
   //上传图片
   uploadImage: function () {
     let that = this;
+    if (that.data.review) {
+      return false
+    }
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
@@ -96,6 +114,9 @@ Page({
   //上传视频
   uploadVideo: function () {
     let that = this;
+    if (that.data.review) {
+      return false
+    }
     wx.chooseVideo({
       sourceType: ['camera'],
       maxDuration: 10,
@@ -224,9 +245,10 @@ Page({
           }else if (that.data.previewVideo != '') {
             fileType = 2
           }
+          let tempp = JSON.parse(res.data)
           let data = {
             fileType:fileType,
-            fileUrl:res.data.result.fileUrl,
+            fileUrl:tempp.result.fileUrl,
             index:that.data.id
           }
           request('POST', urlList.sigleTask, data, app.globalData.openId, that.submitSuccess, that.submitFail)
@@ -236,7 +258,7 @@ Page({
       let data = {
         fileType:1,
         fileUrl:res.data.result.fileUrl,
-        index:0
+        index:that.data.id
       }
       request('POST', urlList.sigleTask, data, app.globalData.openId, that.submitSuccess, that.submitFail)
     }

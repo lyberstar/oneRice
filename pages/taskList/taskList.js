@@ -52,7 +52,7 @@ Page({
 
   getUserStatusSuccess(res){
     let that = this
-    let data = res.data.data
+    let data = res.data.result
     that.setData({
       next_index:data.next_index
     })
@@ -70,10 +70,10 @@ Page({
     })
   },
 
-  goDetail() {
+  goDetail(e) {
     let id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/taskDetail/taskDetail?id=' + id + '&getDetail = 1'
+      url: '/pages/taskDetail/taskDetail?id=' + id + '&getDetail=1'
     })
   },
 
