@@ -3,29 +3,19 @@ import { request } from "utils/util.js"
 
 App({
   onLaunch () {
-    // wx.login({
-    //   success: res => {
-    //     // 利用code获取唯一标示openid
-    //     this.getOpenid(res.code)
-    //   }
-    // })
-    let token = wx.getStorageSync('token')
-    if (token != '') {
-      wx.switchTab({
-        url: '/pages/index/index'
-      })
-    }
+    wx.login({
+      success: res => {
+        // 利用code获取唯一标示openid
+        this.getOpenid(res.code)
+      }
+    })
   },
   handleSuccess(res) {
-    if (res.data.ret == 0) {
-      this.globalData.openId = res.data.data.openId
-      console.log('this.globalData.openId:',this.globalData.openId)
-      // this.globalData.isExist = res.data.result.isExist
-      // if (res.data.result.isExist) {
-      //   wx.switchTab({
-      //     url: '../index/index'
-      //   })
-      // }
+    if (res.data.code == 0) {
+      this.globalData.openId = res.data.result.openId
+      wx.switchTab({
+        url: '../index/index'
+      })
     } else {
       console.log('get openid失败', res.data)
     }

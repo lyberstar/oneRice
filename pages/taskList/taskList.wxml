@@ -14,5 +14,5 @@
   </view>
 </view>
 <view class="btn_contain">
-    <button catchtap="submit" class="submit">完成挑战</button>
+    <button catchtap="submit" class="submit" disabled="{{next_index < 10}}">完成挑战</button>
 </view>

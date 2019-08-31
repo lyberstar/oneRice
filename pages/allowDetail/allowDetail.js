@@ -31,21 +31,10 @@ Page({
   },
   handleSuccess(res) {
     if (res.data.code == 0) {
-      // wx.setStorageSync('token',res.data.result.token)
-      app.globalData.openId = res.data.result.openId
+      this.globalData.openId = res.data.result.openId
       wx.switchTab({
         url: '../index/index'
       })
-      // app.globalData.isExist = res.data.result.isExist
-      // if (res.data.result.isExist) {
-      //   wx.switchTab({
-      //     url: '../index/index'
-      //   })
-      // } else {
-      //   wx.navigateTo({
-      //     url: '../form/form',
-      //   })
-      // }
     } else {
       console.log('get openid失败', res.data)
     }
