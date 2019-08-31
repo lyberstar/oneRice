@@ -26,14 +26,14 @@ Page({
       title: '加载中',
     })
     let token = wx.getStorageSync('token')
-    request('POST', urlList.newsDetail, { id: id }, token, this.getActivityDetailSuccess)
+    request('POST', urlList.newsDetail, { newsId: id }, app.globalData.openId, this.getActivityDetailSuccess)
   },
   getActivityDetailSuccess(res) {
     const that = this
-    WxParse.wxParse('article', 'html', res.data.data.detail.content, that, 5)
+    WxParse.wxParse('article', 'html', res.data.result.content, that, 5)
     wx.hideLoading()
     this.setData({
-      detail: res.data.data.detail,
+      detail: res.data.result,
     })
   },
 

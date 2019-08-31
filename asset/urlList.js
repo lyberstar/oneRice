@@ -6,7 +6,7 @@ const urlList = {
   uploadAnswer: '/task/ask_upload',     //单个任务提交
   tastDetail: '/task/task_detail',    //任务详情   
   getActivityDetail: '/task/cover_intro', // 获取活动介绍
-  rankList: '/rankList', // 获取区域个人排行列表
+  rankList: '/task/rankList', // 获取区域个人排行列表
   newsList: '/wx/news',  //获取新闻列表
   newsDetail: '/wx/newsDetail', //新闻详情
 

@@ -24,10 +24,10 @@ Page({
   },
   getActivityDetailSuccess(res) {
     const that = this
-    WxParse.wxParse('article', 'html', res.data.data.detail.content, that, 5)
+    WxParse.wxParse('article', 'html', res.data.result.content, that, 5)
 
     this.setData({
-      detail: res.data.data.detail,
+      detail: res.data.result,
     })
   },
   /**

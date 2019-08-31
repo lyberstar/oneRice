@@ -64,8 +64,7 @@ Page({
       wx.showLoading({
         title: '加载中',
       })
-      let token = wx.getStorageSync('token')
-      request('POST', urlList.newsList, data, token, this.getPersonRankSuccess, this.getPersonRankFail)
+      request('POST', urlList.newsList, data, app.globalData.openId, this.getPersonRankSuccess, this.getPersonRankFail)
     }else{
       console.log('没数据了')
       wx.hideLoading()
@@ -77,16 +76,16 @@ Page({
     let that = this
     wx.hideLoading()
     let { page, rankList } = that.data
-    if (res.data.data.pageCount == page) {
+    if (res.data.result.pageCount == page) {
       that.setData({
         nomore:true
       })
     }
-    rankList = rankList.concat(res.data.data.list)
+    rankList = rankList.concat(res.data.result.data)
     that.setData({
       rankList:rankList,
       page:page + 1,
-      totalPage:res.data.data.pageCount
+      totalPage: res.data.result.pageCount
     })
     console.log(that.data.rankList)
   },

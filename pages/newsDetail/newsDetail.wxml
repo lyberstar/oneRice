@@ -2,9 +2,9 @@
 <import src="../../wxParse/wxParse.wxml"/>
 
 <view class='content'>
-	<image class="head-img" src="{{detail.littleImageUrl}}"></image>
+	<image class="head-img" src="{{detail.coverImageUrl}}"></image>
 	<view class="title-box">
-		<view class="title">{{detail.newsName}}</view>
+		<view class="title">{{detail.title}}</view>
 		<view class="time">{{detail.time}}</view>
 	</view>
   	<view class='detail-content'>
