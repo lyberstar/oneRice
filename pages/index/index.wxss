@@ -50,19 +50,19 @@ page{
 }
 
 .btn_back1{
-	background-image: url("https://unsplash.sxlcdn.com/photo-1518215069569-0781b2f8cc69?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&h=1500&w=2000&q=100&fit=clip&fm=jpg");
+	background-image: url("https://files.cdstwlkj.com/file/e244e800-114a-405b-9ec3-73fea70a89d4");
 }
 
 .btn_back2{
-	background-image: url("https://unsplash.sxlcdn.com/photo-1542254503-7eaa3ddacc0b?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&h=1500&w=2000&q=100&fit=clip&fm=jpg");
+	background-image: url("https://files.cdstwlkj.com/file/b459ca14-d1c3-484e-aac1-8e0cc1101197");
 }
 
 .btn_back3{
-	background-image: url("https://unsplash.sxlcdn.com/photo-1516535928439-27a66ff7a92a?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&h=1500&w=2000&q=100&fit=clip&fm=jpg");
+	background-image: url("https://files.cdstwlkj.com/file/666bf713-58ae-491d-b168-86381881d2fe");
 }
 
 .btn_back4{
-	background-image: url("https://unsplash.sxlcdn.com/photo-1557272497-e8092a7e4621?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&h=1500&w=2000&q=100&fit=clip&fm=jpg");
+	background-image: url("https://files.cdstwlkj.com/file/dd2325a0-c629-43e5-8022-b9182898d3a7");
 }
 
 .img-content {
