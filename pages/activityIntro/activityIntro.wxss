@@ -5,4 +5,5 @@
   font-size: 28rpx;
   line-height: 1.6;
   padding: 30rpx;
+  color: #333;
 }

@@ -136,7 +136,7 @@ Page({
     let that = this
     wx.showModal({
       title: '提示',
-      content: '是否确定提交？',
+      content: '是否确定提交？是否点击生成并分享专属海报？',
       success (res) {
         if (res.confirm) {
           wx.showLoading({
@@ -186,7 +186,7 @@ Page({
         success (res){
           let data = {
             fileType:1,
-            fileUrl:res.data.result.fileUrl,
+            fileUrl:JSON.parse(res.data).result.fileUrl,
             index:0
           }
           request('POST', urlList.sigleTask, data, app.globalData.openId, that.submitSuccess, that.submitFail)

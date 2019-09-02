@@ -1,10 +1,11 @@
 page{
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 	overflow: hidden;
 }
 
 .body_contain{
+  padding: 20rpx 0;
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -15,7 +16,7 @@ page{
 
 .btm-box{
 	width: 680rpx;
-	height: 22%;
+	height: 19%;
 	position: relative;
 }
 
@@ -45,7 +46,7 @@ page{
 }
 
 .btm-top{
-	margin-top: 30rpx;
+	margin-top: 20rpx;
 }
 
 .btn_back1{
@@ -62,4 +63,19 @@ page{
 
 .btn_back4{
 	background-image: url("https://unsplash.sxlcdn.com/photo-1557272497-e8092a7e4621?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&h=1500&w=2000&q=100&fit=clip&fm=jpg");
+}
+
+.img-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 40rpx;
+}
+.logo1 {
+  width: 30%;
+  height: 130rpx;
+}
+.logo2 {
+  width: 20%;
+  height: 130rpx;
 }

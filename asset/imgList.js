@@ -13,6 +13,10 @@ const IMG_LIST = {
   formBg: '../../img/pic_bg@2x.png',
   userbg: '../../img/pic_userbg@2x.png',
   wxcode: '../../img/wxcode.png',
+  taskBg: '../../img/taskBg.jpeg',
+  logo: '../../img/logo.png',
+  logo1: '../../img/logo1.png',
+  logo2: '../../img/logo2.png',
 }
 
 module.exports = {

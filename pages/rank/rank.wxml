@@ -3,6 +3,7 @@
 <view class='content'>
   <view class='switch-rank-type'>
     <view class='switch-item {{rankType === 0 ? "active" : ""}}' bindtap='switchToArea'>区域排行</view>
+    <view class="line"></view>
     <view class='switch-item {{rankType === 1 ? "active" : ""}}' bindtap='switchToTotal'>总排行</view>
   </view>
   <view class='rank-list'>

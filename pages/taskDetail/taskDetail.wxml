@@ -19,9 +19,12 @@
     </view>
     <view class="info_contain">
 		<template is="taskIntro" wx:if="{{!review}}"></template>
-        <view wx:else class="have-done">已完成</view>
+        <view wx:else class="have-done">
+          任务已完成
+          <image src="{{IMG_LIST.taskBg}}" class="task-bg"></image>
+        </view>
 	</view>
     <view class="btn_contain" wx:if="{{!review}}">
-        <button catchtap="submit" class="submit">上传</button>
+        <button catchtap="submit" class="submit"  disabled="{{previewImage == '' && previewVideo == ''}}">上传</button>
     </view>
 </view>

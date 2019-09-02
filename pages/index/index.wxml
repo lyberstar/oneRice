@@ -13,4 +13,8 @@
 	<view class="btm-box btm-top">
 		<button class="start_btn btn_back4" catchtap="turnNews">新闻</button>
 	</view>
+	<view class="btm-box btm-top img-content">
+    <image class="logo2" src="{{IMG_LIST.logo2}}"></image>
+    <image class="logo1" src="{{IMG_LIST.logo1}}"></image>
+	</view>
 </view>

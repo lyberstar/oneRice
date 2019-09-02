@@ -1,13 +1,17 @@
 <!--pages/newsList/newsList.wxml-->
 <scroll-view upper-threshold="-50" scroll-y bindscrolltolower="loadMoreRank" class="body-contain" style="height: {{cityHeight}}rpx">
 	<view class="news-box" wx:for="{{rankList}}" wx:for-item="item" wx:key="index" data-id="{{item.newsId}}" catchtap="turnNews">
-		<view class="left-box">
-			<image class="cover-img" src="{{item.coverImageUrl}}"></image>
-			<view class="title-box">
-				<view class="title">{{item.newsName}}</view>
-				<view class="sm-title" wx:if="{{item.subhead}}">{{item.subhead}}</view>
-			</view>
-		</view>
-		<view class="right-box">{{item.time}}</view>
+    <view class="img-content">
+		  <image class="cover-img" src="{{item.coverImageUrl}}"></image>
+    </view>
+    <view class="news-des">
+      <view class="left-box">
+        <view class="title-box">
+          <view class="title">{{item.title}}</view>
+          <view class="sm-title" wx:if="{{item.subhead}}">{{item.subhead}}</view>
+        </view>
+      </view>
+      <view class="right-box">{{item.time}}</view>
+    </view>
 	</view>
 </scroll-view>

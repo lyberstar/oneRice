@@ -10,7 +10,8 @@ Page({
    */
   data: {
     captainId:'',
-    isSignUp:false
+    isSignUp:false,
+    IMG_LIST,
   },
 
   /**

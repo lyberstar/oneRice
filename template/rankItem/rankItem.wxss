@@ -1,12 +1,13 @@
 .rank-item {
   background-color: #fff;
   border-bottom: 2rpx solid #ddd;
+  color: #666;
 }
 .rank {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 30rpx 0;
+  padding: 20rpx 0;
 }
 .left-rank{
   width: 60%;
@@ -49,7 +50,6 @@ image {
 .name {
   font-size: 32rpx;
   font-weight: 400;
-  color: #333;
 }
 .area {
   font-size: 24rpx;

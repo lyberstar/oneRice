@@ -1,4 +1,5 @@
 // pages/taskDetail/taskDetail.js
+import { IMG_LIST } from "../../asset/imgList.js"
 import { request, picUpload } from "../../utils/util.js"
 import { urlList, fileUrl } from "../../asset/urlList.js"
 
@@ -11,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    IMG_LIST,
     id:'',
     previewImage:'',
     previewVideo:'',

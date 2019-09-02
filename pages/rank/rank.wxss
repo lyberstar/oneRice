@@ -1,5 +1,5 @@
 /* pages/rank/rank.wxss */
-@import '../../template/rankItem/rankItem.wxss'
+@import '../../template/rankItem/rankItem.wxss';
 
 page {
   background-color: #efefef;
@@ -63,4 +63,8 @@ page {
 }
 .switch-item.active {
   color: #D70F0E;
+}
+.line {
+  width: 2rpx;
+  background-color: #999;
 }

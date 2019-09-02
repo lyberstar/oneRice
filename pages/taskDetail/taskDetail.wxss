@@ -1,5 +1,5 @@
 /* pages/taskDetail/taskDetail.wxss */
-@import '../../template/taskIntro/taskIntro.wxss'
+@import '../../template/taskIntro/taskIntro.wxss';
 page{
 	width: 100%;
 }
@@ -38,7 +38,7 @@ page{
 }
 
 .uploadImage .preview_box{
-	width: 400rpx;
+	width: 600rpx;
   	height: 400rpx;
   	border-radius: 6rpx;
   	border: solid 1rpx #d2d2d2;
@@ -49,7 +49,7 @@ page{
 }
 
 .uploadImage .preview_box .preview{
-	width: 400rpx;
+	width: 600rpx;
   	height: 400rpx;
 }
 
@@ -109,4 +109,11 @@ page{
 	width: 100%;
 	text-align: center;
 	font-size: 32rpx;
+  color: #666;
+}
+.task-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }

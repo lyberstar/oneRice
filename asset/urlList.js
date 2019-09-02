@@ -16,7 +16,7 @@ const urlList = {
 
 // const baseUrl = 'https://www.easy-mock.com/mock/5d513bbb5499932132a80e4d/mock'
 
-const baseUrl = 'http://25u4199n99.qicp.vip:12081'
+const baseUrl = 'https://or.cdstwlkj.com/api/v1'
 
 const fileUrl = 'https://files.cdstwlkj.com'
 
