@@ -79,17 +79,43 @@ Page({
 
   //提交
   submit:function(){
+    wx.showLoading({
+      title: '提交中'
+    })
+    request('GET', urlList.getUserStatus, {}, app.globalData.openId, this.getTimeSuccess, this.getTimeFail) 
+  },
+
+  getTimeSuccess(res){
     let that = this
-    if (app.globalData.ask_finish) {
-      wx.redirectTo({
-        url:'/pages/poster/poster'
-      })
+    let data = res.data
+    if (data.code == 0) {
+      let curTimestamp = parseInt(new Date().getTime() / 1000);
+      let timestampDiff = Math.floor((curTimestamp - data.result.sign_to_now) / 60);
+      wx.hideLoading()
+      if (timestampDiff < 60) {
+        wx.showToast({
+          title: '总任务用时最低60分钟，请稍后重试。',
+          icon: 'none',
+          duration: 1500
+        })
+      }else{
+        if (app.globalData.ask_finish) {
+          wx.redirectTo({
+            url:'/pages/poster/poster'
+          })
+        }else{
+          wx.redirectTo({
+            url:'/pages/questionnaire/questionnaire'
+          })
+        }
+      }
     }else{
-      wx.redirectTo({
-        url:'/pages/questionnaire/questionnaire'
+      wx.showToast({
+        title: data.msg,
+        icon: 'none',
+        duration: 1500
       })
     }
-    
   },
 
   /**
