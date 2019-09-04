@@ -205,8 +205,7 @@ Page({
     let that = this
     let data = res.data
     if (data.code == 0) {
-      let curTimestamp = parseInt(new Date().getTime() / 1000);
-      let timestampDiff = Math.floor((curTimestamp - data.result.sign_to_now) / 60);
+      let timestampDiff = Math.floor(data.result.sign_to_now / 60);
       wx.hideLoading()
       wx.showModal({
         title: '提示',
