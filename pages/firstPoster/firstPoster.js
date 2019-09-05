@@ -16,7 +16,7 @@ Page({
     isShow: false,
     phoneWidth: phoneWidth,
     phoneHeight: '',
-    backimg:''
+    backimg: ''
   },
 
   onLoad: function (options) {
@@ -29,18 +29,18 @@ Page({
     let image = options.pic
     that.setData({
       // backimg:'http://tmp/wxb42c66ec2dff1182.o6zAJs1fKALbyIHfTWFsitYJUfSc.8a0iZEAezyvna43c4775776914ff5c3bd0ce740bf11d.jpg',
-      backimg:options.pic,
-      phoneHeight:380* raterpx
+      backimg: options.pic,
+      phoneHeight: 380 * raterpx
     })
 
-    setTimeout(function(){
+    setTimeout(function () {
       that.createPoster();
-    },300)
+    }, 300)
   },
 
   /// 创建海报
   createPoster: function () {
-    var userinfoStr = wx.getStorageSync('userInfo'); 
+    var userinfoStr = wx.getStorageSync('userInfo');
     wx.showLoading({
       title: '海报生成中...',
     })
@@ -50,7 +50,7 @@ Page({
       bigImage: 'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/677f9cdc847f7972cccec1521d96076ce3c167c7d581ca1b7f740620741928d31e5335896aeb89c267e7410656bc4aa6?pictype=scale&from=30013&version=3.3.3.3&uin=775345792&fname=white.jpg&size=750',
       avatar: userinfoStr.avatarUrl,
       artice: that.data.backimg,
-      code: 'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/4ea200cbf6f6f3bdcbff50920d1918f1b7bf6d9e253db9b66ed06cdc256ab8140d7beb2030e99d9baafd1e0544f2d596?pictype=scale&from=30013&version=3.3.3.3&uin=775345792&fname=1566987791_567260.png&size=750',
+      code: 'https://files.cdstwlkj.com/file/f9dcfc7f-9299-4bc0-b2a0-816608a4b02d',
       name: userinfoStr.nickName,
     };
     /// 绘制
@@ -63,8 +63,8 @@ Page({
         })
         wx.showToast({
           title: '点击图片保存',
-          icon:'none',
-          duration:2000
+          icon: 'none',
+          duration: 2000
         })
       }, 300)
     }, err => {
@@ -227,7 +227,7 @@ Page({
         /// 圆参数 
         const arc_userhead = {
           x: rate(100),
-          y: rate((that.data.phoneHeight+430)/2)
+          y: rate((that.data.phoneHeight + 430) / 2)
         };
 
         // 绘制文字
@@ -307,7 +307,7 @@ Page({
       });
     }
   },
-  againSave:function(){
+  againSave: function () {
     var that = this;
     wx.getSetting({
       success: function success(res) {
@@ -322,7 +322,7 @@ Page({
           var res = true;
           wx.setStorageSync('notShare', res)
         }
-      },fail(res){
+      }, fail(res) {
         console.log(res);
       }
     });

@@ -97,16 +97,10 @@ Page({
     }
     /// 绘制的内容
     const writing = {
-      bigImage: 'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/fa28cb66053cf1be8f6b89722af10981f8bdd5a6f59cabca53b72563bb9a9c3e9e6f109761726ebaad054b6948f4cd72?pictype=scale&from=30013&version=3.3.3.3&uin=775345792&fname=%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190829095633.jpg&size=750',
-      artice: '　　恭喜' + that.data.teamName + '战队' + that.data.name + personcount + '位公益挑战者,您们用时' + that.data.duration + '分钟,与邻居进行了友善的交流,并成功完成一勺米公益挑战。您们的爱心和善举将助力打破邻里关系冷漠,激发更多的邻里互动,让社区生活更温暖！',
+      bigImage: 'https://files.cdstwlkj.com/file/6f9420fe-7f64-477f-979c-271381a90dc6',
+      artice: '　　恭喜' + that.data.teamName + '战队' + that.data.name + personcount + '位公益挑战者成功完成义仓发展网络、壹基金联合发起的“你好，邻居”一勺米公益挑战，你们的爱心和善举将助力打破邻里关系冷漠，激发更多的邻里互动，让社区生活更温暖！',
       logo: '义仓发展网络 壹基金（logo）',
       greatWall: '时间：' + that.data.doneTime,
-
-
-      // avatar: userinfoStr.avatarUrl,
-      // code: 'https://zjw-1252328182.cos.ap-beijing.myqcloud.com/fen/mini.png',
-      // content: '请您填写详细的通讯地址及联系方式，如中奖，将有工作人员与您联系，具体中奖名单将于活动结束后，在首页公布。您将有机会获得中央纪委国家监委网站提供的纪念铅笔一套（名额20人）',
-      // name: userinfoStr.nickName,
     };
     /// 绘制
     this.draw('poster', phoneWidth, phoneHeight, writing).then(res => {

@@ -18,9 +18,10 @@
         </view>
     </view>
     <view class="info_contain">
+    <view class="tippp">{{(id == 9 && !review) ? '（请战队志愿者在完成第九户签字后上传“你好，邻居”小程序）' : ''}}</view>
 		<template is="taskIntro" wx:if="{{!review}}"></template>
         <view wx:else class="have-done">
-          任务已完成
+          任务已完成!
           <image src="{{IMG_LIST.taskBg}}" class="task-bg"></image>
         </view>
 	</view>

@@ -1,6 +1,9 @@
 <!--pages/firstSign/firstSign.wxml-->
 <import src="../../template/taskIntro/taskIntro.wxml"/>
 <view class="body_contain">
+    <view class="main-content">
+        <p>开始之前一起和团队合个影吧！</p>
+    </view>
 	<view class="uploadImage">
     	<view class="img_box" bindtap="uploadImage" wx:if="{{previewImage == '' && previewVideo == ''}}">
     		<image src="../../img/up_img.png" />
