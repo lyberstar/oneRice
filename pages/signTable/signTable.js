@@ -128,7 +128,7 @@ Page({
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     wx.showModal({
       title: '提示',
-      content: '是否确定提交？请及时联系落地机构。',
+      content: '请确认是否已经联系落地机构。',
       success (res) {
         if (res.confirm) {
           console.log('用户点击确定')

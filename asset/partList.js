@@ -166,7 +166,8 @@ const PART_LIST = [
   { partName: "诸暨市彩虹之家居家养老服务中心", partCode: 165 },
   { partName: "驻马店市启航社会工作服务中心", partCode: 166 },
   { partName: "资阳社会工作协会/资阳市心公益社会工作服务中心", partCode: 167 },
-  { partName: "自贡市灵犀社会工作服务中心", partCode: 168 }]
+  { partName: "自贡市灵犀社会工作服务中心", partCode: 168 },
+  { partName: "其他", partCode: 169 }]
 
 module.exports = {
   PART_LIST
