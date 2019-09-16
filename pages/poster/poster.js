@@ -242,8 +242,8 @@ Page({
           str: writing.greatWall,
           maxLine: 1,
           maxWidth: rate(300),
-          x: rate(500),
-          y: rate(400),
+          x: rate(494),
+          y: rate(480),
           height: rate(35)
         })
         ctx.restore();

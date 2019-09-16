@@ -22,7 +22,7 @@
     </view>
     <view class="main-content">
         <p>我正在参加一勺米公益挑战！</p>
-        <p>请为我打call。</p>
+        <p>请为我点赞。</p>
     </view>
     <view class="info_contain">
       <template is="taskIntro"></template>

@@ -25,7 +25,7 @@ page{
 	height: 100%;
 	font-size: 55rpx;
 	display: flex;
-	color: #6293c4;
+	color: #fff;
 	align-items: center;
 	justify-content: center;
 	background-size: cover;
@@ -50,19 +50,19 @@ page{
 }
 
 .btn_back1{
-	background-image: url("https://files.cdstwlkj.com/file/015033f8-9b7f-4623-a83e-4b24a0134b2c");
+	background-image: url("https://files.cdstwlkj.com/file/e244e800-114a-405b-9ec3-73fea70a89d4");
 }
 
 .btn_back2{
-	background-image: url("https://files.cdstwlkj.com/file/1d910d83-0df2-4191-871e-1ab28b701e61");
+	background-image: url("https://files.cdstwlkj.com/file/b459ca14-d1c3-484e-aac1-8e0cc1101197");
 }
 
 .btn_back3{
-	background-image: url("https://files.cdstwlkj.com/file/fee53885-917e-4f15-9fe2-e425385d8266");
+	background-image: url("https://files.cdstwlkj.com/file/666bf713-58ae-491d-b168-86381881d2fe");
 }
 
 .btn_back4{
-	background-image: url("https://files.cdstwlkj.com/file/baf45a80-744e-4c5a-b569-69fffa5c3325");
+	background-image: url("https://files.cdstwlkj.com/file/dd2325a0-c629-43e5-8022-b9182898d3a7");
 }
 
 .img-content {
