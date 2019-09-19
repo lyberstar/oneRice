@@ -1,4 +1,4 @@
-const PART_LIST = [
+const DEFAULT_PART_LIST = [
   { partName: "宝鸡市渭滨区经二路街道办事处新民路社区居民委员会", partCode: 1 },
   { partName: "宝应县立责社工服务社", partCode: 2 },
   { partName: "北京睦友社会工作发展中心", partCode: 3 },
@@ -167,8 +167,22 @@ const PART_LIST = [
   { partName: "驻马店市启航社会工作服务中心", partCode: 166 },
   { partName: "资阳社会工作协会/资阳市心公益社会工作服务中心", partCode: 167 },
   { partName: "自贡市灵犀社会工作服务中心", partCode: 168 },
-  { partName: "其他", partCode: 169 }]
+  { partName: "金都社区", partCode: 170 },
+  { partName: "左邻右舍社区治理创新园", partCode: 171 },
+  { partName: "比邻驿家", partCode: 172 },
+  { partName: "南星邻里中心", partCode: 173 },
+  { partName: "红巷生活馆", partCode: 174 },
+  { partName: "管墅社区", partCode: 175 },
+  { partName: "大渡党群服务中心", partCode: 176 },
+  { partName: "马桥社区", partCode: 177 },
+  { partName: "湖滨社区", partCode: 178 },
+  { partName: "温州爱心屋网络公益宣传服务中心", partCode: 179 },
+  { partName: "诸暨市吾欣社会工作服务中心", partCode: 180 },
+  { partName: "海盐县民联社工服务中心", partCode: 181 },
+  ]
 
+let PART_LIST = DEFAULT_PART_LIST.sort((a, b) => a.partName.localeCompare(b.partName))
+PART_LIST.push({ partName: "其他", partCode: 169 })
 module.exports = {
   PART_LIST
 }
