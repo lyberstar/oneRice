@@ -1,5 +1,9 @@
 // pages/partList/partList.js
-import { PART_LIST } from "../../asset/partList.js"
+// import { PART_LIST } from "../../asset/partList.js"
+import { request, getAreaName } from "../../utils/util.js"
+import { urlList } from "../../asset/urlList.js"
+
+const app = getApp()
 
 Page({
 
@@ -7,15 +11,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    PART_LIST,
+    PART_LIST:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
+    that.getLocal()
+  },
+
+  getLocal(){
+    request('GET', urlList.localList, {}, app.globalData.openId, this.getUserStatusSuccess, this.getUserStatusFail)
+  },
+
+  getUserStatusSuccess(res){
+    let that = this
+    let data = res.data.result
+    that.setData({
+      PART_LIST:data
+    })
 
   },
+
   choosePart(e) {
     const { item } = e.currentTarget.dataset
     wx.setStorage(

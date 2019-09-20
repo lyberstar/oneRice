@@ -11,7 +11,9 @@ const urlList = {
   newsDetail: '/wx/newsDetail', //新闻详情
 
   testMD5: '/file/queryByMd5',
-  uploadFile: '/file/uploadFile'
+  uploadFile: '/file/uploadFile',
+
+  localList:'/dic/org'
 }
 
 // const baseUrl = 'https://www.easy-mock.com/mock/5d513bbb5499932132a80e4d/mock'
